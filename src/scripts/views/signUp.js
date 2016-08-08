@@ -32,7 +32,7 @@ const SignUpForm = React.createClass({
 		return (
 				<div className="container-narrow signInView">
 					<div className="signIn-header">
-						<a href="#home"><h1 id="iconLogo">PW</h1></a>
+						<a href="#home" id="iconColor"><h1 id="iconLogo">PW</h1></a>
 						<h3>Create Account</h3>
 					</div>
 					<div className="form-wrapper">

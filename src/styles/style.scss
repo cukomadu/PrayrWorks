@@ -2,18 +2,25 @@
 
 //App Colors
 //$orange: #f78a4c;
+//$blue: #0192B5;
+//blue - #33a7c3
+//skyblue - #25c2f2
+//$blue: #459cf2;
+//$blue: #3192f1
+//$darkgrey2: #737373
 $orange: #f7955d;
-$blue: #0192B5;
+$blue: #25c2f2;
 $white: #ffffff;
 $lightgrey: #aaaaaa;
 $darkgrey: #3e3e3e;
+$darkgrey2: #454545;
 $borderColor: #dedede;
 $hoverColor: #fbc4a5;
 
 //General Styles
 body {
 	font-family: 'Open Sans', Helvetica, sans-serif;
-	color: $darkgrey;
+	color: $darkgrey2;
 	//background: $lightgrey;
 	//background-size: cover;
 }
@@ -26,6 +33,61 @@ a:focus{
 	outline: 0;
 
 }
+
+// Pre Header View
+
+.nav-bar.with-logo .nav-logo {
+	top: 31%;
+}
+
+.site-nav-style {
+	
+	.site-nav-logo {
+		width: 80px;
+	}
+
+	@include media-query($med-screen) {
+		.site-nav-logo {
+			width: 150px;
+		}
+	}
+}
+
+// Home View
+
+.container-hero {
+	min-height: 80vh;
+	background: $darkgrey2;
+
+	@include media-query($med-screen) {
+			min-height: 580px;
+			//position: relative;
+			//padding: 115px 0 40px;
+			//overflow: hidden;
+			background: $darkgrey2;
+	}
+
+	.hero {
+		background: none;
+	}
+
+	.hero-text {
+		color: $white;
+	}
+}
+
+#hero-link {
+	background: $orange;
+	border: none;
+}
+
+#nav-color {
+
+	a {
+		color: $lightgrey;
+	}
+}
+	
 
 //Sign In View
 
@@ -43,7 +105,8 @@ a:focus{
 
 		a:hover {
 			color: $blue;
-		}
+			cursor: pointer;
+		}		
 	}
 
 	h3 {
@@ -90,21 +153,21 @@ a:focus{
 	    }
 	}
 
+	.Text {
+			font-size: small;
+			color: $lightgrey;
+	}
+
 	.signInFooter {
 		text-align: center;
-	}
 
-	.Text {
-		font-size: small;
-		color: $lightgrey;
-	}
+		a {
+			color: $hoverColor;
+		}
 
-	a {
-		color: $hoverColor;
-	}
-
-	a:hover {
-		color: $orange;
+		a:hover {
+			color: $orange;
+		}
 	}
 }
 
@@ -124,18 +187,7 @@ a:focus{
  	font-family: "Palatino", serif;
 }
 
-.site-nav-style {
-	
-	.site-nav-logo {
-			width: 80px;
-	}
 
-	@include media-query($med-screen) {
-		.site-nav-logo {
-			width: 150px;
-		}
-	}
-}
 
 #add-section{
 	margin-top: 3%;
@@ -168,15 +220,5 @@ a:focus{
 	}
 }
 
-.container-hero {
-	min-height: 80vh;
 
-	@include media-query($med-screen) {
-			min-height: 580px;
-			//position: relative;
-			//padding: 115px 0 40px;
-			//overflow: hidden;
-			background: #eee;
-	}
-}
 

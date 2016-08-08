@@ -9,10 +9,12 @@ const Home = React.createClass({
 					<PreHeader />
 					<div className="container-hero">
 						<header className="hero">
-							<div className="container-narrow">  
+							<div className="container-narrow hero-text">  
 							     <h2 className="title">The simplest way to organize, share and track your prayers.</h2>
-							     <h4 className="subtitle">Let them know you are praying - show some love</h4>
-							 	 <a href="#signUp" className="btn primary md">Create Free Account</a>
+							     <h4 className="subtitle">Let them know you are praying...</h4>
+							</div>
+							<div className="container-narrow"> 
+							 	 <a href="#signUp" id="hero-link" className="btn primary md">Create Free Account</a>
 							</div>
 						</header>
 					</div>

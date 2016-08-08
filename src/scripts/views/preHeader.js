@@ -10,9 +10,9 @@ const PreHeader = React.createClass({
 	render: function(){
 		return(
 				<nav className="nav-bar with-logo site-nav-style">
-					<div className="nav-logo">
+					<div className="nav-logo logo">
 						<a href="#home">
-							<h1><span id="leftLogo">Prayr</span><span id="rightLogo">Works</span></h1>
+							<h1><span id="leftLogo">PRAYR</span><span id="rightLogo">works</span></h1>
 						</a>
 					</div>
 					<input type="checkbox" className="hamburger-toggler"/>
@@ -23,7 +23,7 @@ const PreHeader = React.createClass({
 				      <span className="line"></span>
 				    </div>
 
-				    <div className="nav-list">
+				    <div className="nav-list" id="nav-color">
 				      <a href="#signIn">Sign In</a>
 				      <a href="#add-section">Tour</a>
 				    </div>
