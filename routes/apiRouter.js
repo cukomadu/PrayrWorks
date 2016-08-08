@@ -2,9 +2,75 @@ let Router = require('express').Router;
 const apiRouter = Router()
 let helpers = require('../config/helpers.js')
 
+
+/////////////////////////
+//Import Database Schema
+/////////////////////////
+
 let User = require('../db/schema.js').User
+let Prayr = require('../db/schema.js').Prayr
 
   
+//////////////////
+//PRAYR ROUTES
+//////////////////
+
+//POST - Write
+apiRouter.post('/prayrs', function(request, response){ // create one prayr record
+  let newprayr = new prayr(request.body)
+  newprayr.save(function(err){
+    if(err){
+      return response.json(err)
+    }
+    response.json(newprayr)
+  })
+})
+
+//GET - Read
+apiRouter.get('/prayrs', function(request, response){ // read all prayr records
+  prayr.find(request.query, function(err, records){
+    if(err){
+      return response.json(err)
+    }
+    response.json(records)
+  })
+})
+
+//PUT - Update
+apiRouter.put('/prayrs/:_id', function(request, response){ // update one prayr record
+  var modelId = request.params._id
+  console.log('Incoming -- ', request.body)
+  prayr.findByIdAndUpdate(modelId, request.body, {new: true}, function(err, record){
+    console.log('Record -- ', record)
+
+    if(err){
+      return response.json(err)
+    }
+    else {
+      console.log('model updated', record)
+      response.json(record)
+    }
+  })
+})
+
+//DELETE - Delete
+apiRouter.delete('/prayrs/:_id', function(request, response){
+  prayr.remove({_id: request.params._id}, (err) => {
+    if(err) {
+      return response.json(err)
+    }
+    response.json({
+      msg: `record ${request.params._id} deleted successfully!`,
+      _id: request.params._id
+    })
+  })
+})
+
+
+
+//////////////////
+//USER ROUTES
+//////////////////
   apiRouter
     .get('/users', function(req, res){
       User.find(req.query , "-password", function(err, results){
@@ -44,8 +110,6 @@ let User = require('../db/schema.js').User
         })
       })  
     })
-
-    // Routes for a Model(resource) should have this structure
 
 
 module.exports = apiRouter

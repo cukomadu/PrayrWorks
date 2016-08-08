@@ -1,10 +1,182 @@
-* {
-	font-family: Helvetica, Arial, sans-serif;
-	box-sizing: border-box;
+@import '../../node_modules/margo-css/margo.scss';
+
+//App Colors
+//$orange: #f78a4c;
+$orange: #f7955d;
+$blue: #0192B5;
+$white: #ffffff;
+$lightgrey: #aaaaaa;
+$darkgrey: #3e3e3e;
+$borderColor: #dedede;
+$hoverColor: #fbc4a5;
+
+//General Styles
+body {
+	font-family: 'Open Sans', Helvetica, sans-serif;
+	color: $darkgrey;
+	//background: $lightgrey;
+	//background-size: cover;
 }
 
-h1 {
-	font-size: 300px;
-	text-align: center;
-	color: fuchsia;
+a {
+	text-decoration: none;
 }
+
+a:focus{
+	outline: 0;
+
+}
+
+//Sign In View
+
+.signInView {
+	//background-image: url("https://s19.postimg.org/5kx3p33v7/sign_In_sign_Up_bckgd.jpg");
+	//background-size: cover;
+
+	.signIn-header {
+		    margin: 68px 0 26px;
+		    text-align: center;
+
+		#iconLogo {
+			color: $lightgrey;
+		}
+
+		a:hover {
+			color: $blue;
+		}
+	}
+
+	h3 {
+		color: $orange;
+	}
+
+	.form-wrapper {
+		position: relative;
+	    margin-left: auto;
+	    margin-right: auto;
+	    padding: 0 10px;
+
+	    .form-body {
+
+	    	max-width: 384px;
+		    margin: 0 auto 28px;
+		    border: 1px solid $borderColor;
+		    border-radius: 2px;
+		    text-align: left;
+		    
+
+		    .signIn-form {
+		    	background: $white;
+
+		    	.form-content {
+		    		color: $lightgrey;
+		    		margin: 32px;
+		    		width: 84%;
+		    		font-size: small;
+
+		    		.signInUpButton {
+		    			background: $orange;
+		    			width: 100%;
+		    			margin-top: 10%;
+		    			border: none;
+		    		}
+
+		    		input:focus {
+		    			border-color: #fcdbc9;
+		    		}
+		    	}
+
+		    }
+	    }
+	}
+
+	.signInFooter {
+		text-align: center;
+	}
+
+	.Text {
+		font-size: small;
+		color: $lightgrey;
+	}
+
+	a {
+		color: $hoverColor;
+	}
+
+	a:hover {
+		color: $orange;
+	}
+}
+
+
+
+#leftLogo {
+	color: $blue;
+}
+
+#rightLogo {
+	color: $orange;
+}
+
+
+
+.alt-font {
+ 	font-family: "Palatino", serif;
+}
+
+.site-nav-style {
+	
+	.site-nav-logo {
+			width: 80px;
+	}
+
+	@include media-query($med-screen) {
+		.site-nav-logo {
+			width: 150px;
+		}
+	}
+}
+
+#add-section{
+	margin-top: 3%;
+}
+
+.addImg {
+	width: 200px;
+	display: block;
+	margin: auto;
+	background-image: url("../images/add.png")
+}
+
+.subNav {
+	font-size: 0;
+
+	> * {
+		display: block;
+		font-size: medium;
+		text-align: center;
+		text-decoration: none;
+		line-height: 30px;
+
+		@include media-query($med-screen) {
+			line-height: 80px;
+			display: inline-block;
+			width: 20%;
+			vertical-align: top;
+			text-align: center;
+		}
+	}
+}
+
+.container-hero {
+	min-height: 80vh;
+
+	@include media-query($med-screen) {
+			min-height: 580px;
+			//position: relative;
+			//padding: 115px 0 40px;
+			//overflow: hidden;
+			background: #eee;
+	}
+}
+
