@@ -8,13 +8,13 @@ import {app_name} from '../app'
 //////////////////////////////
 
 const PrayrModel = Backbone.Model.extend({
-	urlRoot: "/api/prayrs",
-	idAttribute: "_id"
+	urlRoot: '/api/prayrs',
+	idAttribute: '_id'
 })
 
 const PrayrCollection = Backbone.Collection.extend({
 	model: PrayrModel,
-	url: "/api/prayrs"
+	url: '/api/prayrs'
 })
 
 

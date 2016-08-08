@@ -17,18 +17,18 @@ let Prayr = require('../db/schema.js').Prayr
 
 //POST - Write
 apiRouter.post('/prayrs', function(request, response){ // create one prayr record
-  let newprayr = new prayr(request.body)
-  newprayr.save(function(err){
+  let newPrayr = new Prayr(request.body)
+  newPrayr.save(function(err){
     if(err){
       return response.json(err)
     }
-    response.json(newprayr)
+    response.json(newPrayr)
   })
 })
 
 //GET - Read
 apiRouter.get('/prayrs', function(request, response){ // read all prayr records
-  prayr.find(request.query, function(err, records){
+  Prayr.find(request.query, function(err, records){
     if(err){
       return response.json(err)
     }
@@ -40,7 +40,7 @@ apiRouter.get('/prayrs', function(request, response){ // read all prayr records
 apiRouter.put('/prayrs/:_id', function(request, response){ // update one prayr record
   var modelId = request.params._id
   console.log('Incoming -- ', request.body)
-  prayr.findByIdAndUpdate(modelId, request.body, {new: true}, function(err, record){
+  Prayr.findByIdAndUpdate(modelId, request.body, {new: true}, function(err, record){
     console.log('Record -- ', record)
 
     if(err){
@@ -55,7 +55,7 @@ apiRouter.put('/prayrs/:_id', function(request, response){ // update one prayr r
 
 //DELETE - Delete
 apiRouter.delete('/prayrs/:_id', function(request, response){
-  prayr.remove({_id: request.params._id}, (err) => {
+  Prayr.remove({_id: request.params._id}, (err) => {
     if(err) {
       return response.json(err)
     }

@@ -1,6 +1,6 @@
 import { User, PrayrModel, PrayrCollection } from './models/models'
 import PRAYR_STORE from './prayrStore'
-import Toastr from 'toastr'
+import toastr from 'toastr'
 
 
 const ACTIONS = {
@@ -8,8 +8,8 @@ const ACTIONS = {
 	signUserUp: function(userObj){
 		User.register(userObj).then( () => ACTIONS.signUserIn(userObj.email, userObj.password),
             (error) => {
-               // toastr.error('SignUp Unsuccessful')
-                //console.log(error)
+                toastr.error('SignUp Unsuccessful')
+                console.log(error)
             }
         )
 	},
@@ -18,12 +18,12 @@ const ACTIONS = {
         User.login(email, password).then(
             (responseData) => {
                toastr.success(`User ${email} Signed In Successfully!`)
-                //console.log(responseData)
+                console.log(responseData)
                 location.hash = 'prayrs/inbox' 
             },
             (error) => {
                 toastr.error('SignIn Unsuccessful')
-               // console.log(error)
+               console.log(error)
             }
         )
     },

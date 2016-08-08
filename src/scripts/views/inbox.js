@@ -29,8 +29,6 @@ const Inbox = React.createClass({
 		return (
 				<div>
 					<PostHeader />
-					<hr />
-					<h3>Prayer Inbox</h3>
 					<PrayrSummary prayrColl={this.state.prayrCollection}/>
 				</div>
 			)
@@ -51,10 +49,10 @@ const PrayrSummary = React.createClass({
 		var collLength = filteredColl.length
 		console.log('this is collLength', collLength)
 		if(collLength < 2){
-			return <p>You Have <a href="#prayrs/shares">{collLength} New</a> Answered Prayer from Shared Prayers!</p>
+			return <p>You have shared a total of <a href="#prayrs/shares">{collLength} </a> prayer!</p>
 		}
 		else {
-			return <p>You Have <a href="#prayrs/shares">{collLength} New</a> Answered Prayers from Shared Prayers!</p>
+			return <p>You have shared a total of <a href="#prayrs/shares">{collLength} </a> prayers!</p>
 		}
         
 	},
@@ -67,10 +65,10 @@ const PrayrSummary = React.createClass({
 		})
 		var collLength = filteredColl.length
 		if(collLength < 2){
-			return <p>You Have <a href="#prayrs/organize">{collLength} New</a> Prayer in your Inbox!</p>
+			return <p>You recently added <a href="#prayrs/organize">{collLength} new</a> prayer to your prayer list!</p>
 		}
 		else {
-			return <p>You Have <a href="#prayrs/organize">{collLength} New</a> Prayers in your Inbox!</p>
+			return <p>You recently added <a href="#prayrs/organize">{collLength} new</a> prayer to your prayer list!</p>
 		}
 	},
 
@@ -82,25 +80,91 @@ const PrayrSummary = React.createClass({
 		})
 		var collLength = filteredColl.length
 		if(collLength < 2){
-			return <p>You Have <a href="#prayrs/mentions">{collLength} New</a> Answered Prayer in your Inbox!</p>
+			return <p className="text-filtered">You have been mentioned in <a href="#prayrs/mentions">{collLength} new</a> prayer! </p>
 		}
 		else {
-			return <p>You Have <a href="#prayrs/mentions">{collLength} New</a> Answered Prayer in your Inbox!</p>
+			return <p>You have been mentioned in <a href="#prayrs/mentions">{collLength} new</a> prayers!</p>
 		}
 	},
 
     render: function(){
         return (
                     <div>
-                    	<p>My Prayers</p>
-                    	{this._calculateNewPryrs(this.props.prayrColl)}
-                    	{this._calculateMyAnswered(this.props.prayrColl)}
-                    	<hr/>
-                    	<p>Shared Prayers</p>
-                    	{this._calculateSharedAnswered(this.props.prayrColl)}
-                    	{/*<p><a href="#pryrs/shared"> {this._calculatePryrStats(this.props.pryrColl)}
-                    	  New</a> Answered Prayer from Shared Prayers</p>*/}
-                    	<hr/>
+                    	<section className="section-label">
+                    		<div className="container-narrow">
+		                    	<div className="grid-container">
+		                    		<div className="lg-12-x-12 label-muted">
+										<h1>Inbox</h1>
+
+									</div>
+								</div>
+							</div>
+						</section>
+						<section >
+							<div className="container-narrow">
+		                    	<div className="grid-container">
+		                    		<div className="lg-6-x-12">
+					                    <h2>Prayers - <span id="subtitle">Your prayer list</span></h2>
+					                    {this._calculateNewPryrs(this.props.prayrColl)}
+					                    <button className="btn md primary" id="inboxButton">Add a prayer</button>
+			                    	</div>
+			                    	<div className="lg-6-x-12">
+										<h2>&nbsp;</h2>
+									<div className="addImg"></div>
+								</div>
+			                    </div>
+			                </div>
+		                </section>
+		                <section >
+							<div className="container-narrow">
+		                    	<div className="grid-container">
+		                    		<div className="lg-6-x-12">
+										<h2>&nbsp;</h2>
+										<div className="addImg"></div>
+									</div>
+		                    		<div className="lg-6-x-12">
+					                    <h2>Mentions - <span id="subtitle">Someone is praying for you</span></h2>
+					                   
+					                    {this._calculateMyAnswered(this.props.prayrColl)}
+					                    <button className="btn md primary" id="inboxButton">See recent mentions</button>
+			                    	</div>
+									                   
+			                    </div>
+			                </div>
+		                </section>
+		                <section>
+							<div className="container-narrow">
+		                    	<div className="grid-container">
+		                    		<div className="lg-6-x-12">
+					                    <h2>Shares - <span id="subtitle">Let them know you are praying</span></h2>
+					                    
+					                    {this._calculateSharedAnswered(this.props.prayrColl)}
+					                    <button className="btn md primary" id="inboxButton">Share a prayer</button>
+			                    	</div>
+			                    	<div className="lg-6-x-12">
+										<h2>&nbsp;</h2>
+										<div className="addImg"></div>
+									</div>
+			                  
+			                    </div>
+			                </div>
+		                </section>
+		                <section>
+							<div className="container-narrow">
+		                    	<div className="grid-container">
+		                    		<div className="lg-6-x-12">
+										<h2>&nbsp;</h2>
+										<div className="addImg"></div>
+									</div>
+		                    		<div className="lg-6-x-12">
+					                    <h2>Track - <span id="subtitle">Your answered prayers</span></h2>
+					                    {this._calculateMyAnswered(this.props.prayrColl)}
+					                    <button className="btn md primary" id="inboxButton">See recent answers</button>
+			                    	</div>
+			                    
+			                    </div>
+			                </div>
+		                </section>
                     </div>
             )
     }

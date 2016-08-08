@@ -12,10 +12,11 @@ $orange: #f7955d;
 $blue: #25c2f2;
 $white: #ffffff;
 $lightgrey: #aaaaaa;
+$lightergrey: #dddddd;
 $darkgrey: #3e3e3e;
 $darkgrey2: #454545;
-$borderColor: #dedede;
-$hoverColor: #fbc4a5;
+$borderOrange: #dedede;
+$hoverOrange: #fbc4a5;
 
 //General Styles
 body {
@@ -35,6 +36,14 @@ a:focus{
 }
 
 // Pre Header View
+
+#leftLogo {
+	color: $blue;
+}
+
+#rightLogo {
+	color: $orange;
+}
 
 .nav-bar.with-logo .nav-logo {
 	top: 31%;
@@ -84,7 +93,7 @@ a:focus{
 #nav-color {
 
 	a {
-		color: $lightgrey;
+		color: $darkgrey2;
 	}
 }
 	
@@ -123,7 +132,7 @@ a:focus{
 
 	    	max-width: 384px;
 		    margin: 0 auto 28px;
-		    border: 1px solid $borderColor;
+		    border: 1px solid $borderOrange;
 		    border-radius: 2px;
 		    text-align: left;
 		    
@@ -162,7 +171,7 @@ a:focus{
 		text-align: center;
 
 		a {
-			color: $hoverColor;
+			color: $hoverOrange;
 		}
 
 		a:hover {
@@ -171,15 +180,35 @@ a:focus{
 	}
 }
 
+// Inbox View
 
+.label-muted {
+	color: $lightergrey;
+}
 
-#leftLogo {
+#subtitle {
+	font-size: large;
 	color: $blue;
 }
 
-#rightLogo {
-	color: $orange;
+#inboxButton {
+	background: $borderOrange;
+	margin-top: 10%;
+	border: none;
 }
+
+.section-label {
+	h1 {
+		text-align: right;
+	}
+}
+
+.text-filtered {
+	margin-top: 50%;
+}
+
+
+
 
 
 

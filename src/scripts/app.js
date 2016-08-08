@@ -43,32 +43,32 @@ const app = function() {
   		},
 
   		_showInbox: function(){
-		    if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
+		    //if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
 		      	ReactDOM.render(<Inbox />, document.querySelector('.container'))
     	},
 
     	_showAdd: function(){
-      		if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
+      		//if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
   				ReactDOM.render(<Add />, document.querySelector('.container'))
   		},
 
   		_showOrganize: function(){
-      		if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
+      	//	if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
       			ReactDOM.render(<Organize />, document.querySelector('.container'))
     	},
 
     	_showShares: function(){
-      		if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
+      		//if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
   				ReactDOM.render(<Shares />, document.querySelector('.container'))
   		},
 
   		_showMentions: function(){
-      		if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
+      		//if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
   				ReactDOM.render(<Mentions />, document.querySelector('.container'))
   		},
 
   		_showTrack: function(){
-      		if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
+      		//if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
   				ReactDOM.render(<Track />, document.querySelector('.container'))
   		},
 
