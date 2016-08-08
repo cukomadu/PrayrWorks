@@ -49,10 +49,10 @@ const PrayrSummary = React.createClass({
 		var collLength = filteredColl.length
 		console.log('this is collLength', collLength)
 		if(collLength < 2){
-			return <p>You have shared a total of <a href="#prayrs/shares">{collLength} </a> prayer!</p>
+			return <p className="text-filtered">You have shared a total of <a href="#prayrs/shares">{collLength} </a> prayer!</p>
 		}
 		else {
-			return <p>You have shared a total of <a href="#prayrs/shares">{collLength} </a> prayers!</p>
+			return <p className="text-filtered">You have shared a total of <a href="#prayrs/shares">{collLength} </a> prayers!</p>
 		}
         
 	},
@@ -65,10 +65,10 @@ const PrayrSummary = React.createClass({
 		})
 		var collLength = filteredColl.length
 		if(collLength < 2){
-			return <p>You recently added <a href="#prayrs/organize">{collLength} new</a> prayer to your prayer list!</p>
+			return <p className="text-filtered">You recently added <a href="#prayrs/organize">{collLength} new</a> prayer to your prayer list!</p>
 		}
 		else {
-			return <p>You recently added <a href="#prayrs/organize">{collLength} new</a> prayer to your prayer list!</p>
+			return <p className="text-filtered">You recently added <a href="#prayrs/organize">{collLength} new</a> prayer to your prayer list!</p>
 		}
 	},
 
@@ -83,15 +83,15 @@ const PrayrSummary = React.createClass({
 			return <p className="text-filtered">You have been mentioned in <a href="#prayrs/mentions">{collLength} new</a> prayer! </p>
 		}
 		else {
-			return <p>You have been mentioned in <a href="#prayrs/mentions">{collLength} new</a> prayers!</p>
+			return <p className="text-filtered">You have been mentioned in <a href="#prayrs/mentions">{collLength} new</a> prayers!</p>
 		}
 	},
 
     render: function(){
         return (
                     <div>
-                    	<section className="section-label">
-                    		<div className="container-narrow">
+                    	<section className="section-label">  
+		                    	<div className="container-narrow">
 		                    	<div className="grid-container">
 		                    		<div className="lg-12-x-12 label-muted">
 										<h1>Inbox</h1>
@@ -106,7 +106,7 @@ const PrayrSummary = React.createClass({
 		                    		<div className="lg-6-x-12">
 					                    <h2>Prayers - <span id="subtitle">Your prayer list</span></h2>
 					                    {this._calculateNewPryrs(this.props.prayrColl)}
-					                    <button className="btn md primary" id="inboxButton">Add a prayer</button>
+					                    <a href="#prayrs/add" className="btn md primary" id="inboxButton">Add to your list</a>
 			                    	</div>
 			                    	<div className="lg-6-x-12">
 										<h2>&nbsp;</h2>
@@ -126,7 +126,7 @@ const PrayrSummary = React.createClass({
 					                    <h2>Mentions - <span id="subtitle">Someone is praying for you</span></h2>
 					                   
 					                    {this._calculateMyAnswered(this.props.prayrColl)}
-					                    <button className="btn md primary" id="inboxButton">See recent mentions</button>
+					                    <a href="#prayrs/mentions" className="btn md primary" id="inboxButton">See recent mentions</a>
 			                    	</div>
 									                   
 			                    </div>
@@ -139,7 +139,7 @@ const PrayrSummary = React.createClass({
 					                    <h2>Shares - <span id="subtitle">Let them know you are praying</span></h2>
 					                    
 					                    {this._calculateSharedAnswered(this.props.prayrColl)}
-					                    <button className="btn md primary" id="inboxButton">Share a prayer</button>
+					                    <a href="#prayrs/shares" className="btn md primary" id="inboxButton">See recent shares</a>
 			                    	</div>
 			                    	<div className="lg-6-x-12">
 										<h2>&nbsp;</h2>
@@ -159,7 +159,7 @@ const PrayrSummary = React.createClass({
 		                    		<div className="lg-6-x-12">
 					                    <h2>Track - <span id="subtitle">Your answered prayers</span></h2>
 					                    {this._calculateMyAnswered(this.props.prayrColl)}
-					                    <button className="btn md primary" id="inboxButton">See recent answers</button>
+					                    <a href="#prayrs/track" className="btn md primary" id="inboxButton">See recent answers</a>
 			                    	</div>
 			                    
 			                    </div>

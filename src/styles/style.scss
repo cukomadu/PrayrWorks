@@ -9,6 +9,7 @@
 //$blue: #3192f1
 //$darkgrey2: #737373
 $orange: #f7955d;
+$lighterOrange: #fcdbc9;
 $blue: #25c2f2;
 $white: #ffffff;
 $lightgrey: #aaaaaa;
@@ -154,7 +155,7 @@ a:focus{
 		    		}
 
 		    		input:focus {
-		    			border-color: #fcdbc9;
+		    			border-color: $lighterOrange;
 		    		}
 		    	}
 
@@ -192,8 +193,8 @@ a:focus{
 }
 
 #inboxButton {
-	background: $borderOrange;
-	margin-top: 10%;
+	background: $orange;
+	margin-top: 5%;
 	border: none;
 }
 
@@ -204,7 +205,7 @@ a:focus{
 }
 
 .text-filtered {
-	margin-top: 50%;
+	margin-top: 7%;
 }
 
 
