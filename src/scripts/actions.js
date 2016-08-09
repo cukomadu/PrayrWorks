@@ -41,15 +41,16 @@ const ACTIONS = {
     	var newPrayr = new PrayrModel(prayrObj)
         newPrayr.save().then(
             (responseData) => { 
-                //console.log(responseData)
+                console.log(responseData)
                toastr.success('Prayr Added Successfully!')
         		location.hash = 'prayrs/add'    
             },
             (error) => {
-                //toastr.error('Prayr did not save successfully!')
-                //console.log(error)
+                toastr.error('Prayr did not save successfully!')
+                console.log(error)
             }
         )
+        PRAYR_STORE.data.prayrCollection.add(newPrayr)
     },
 
     updatePrayrModel: function(modelId){
@@ -70,7 +71,7 @@ const ACTIONS = {
                 }   
             )
 
-            PRYR_STORE.data.prayrCollection.trigger('update')
+            PRAYR_STORE.data.prayrCollection.trigger('update')
     },
 
     updateViewedStatus: function(modelId){
@@ -119,6 +120,23 @@ const ACTIONS = {
     deletePrayrModel: function(modelId){
         let prayrModel = PRAYR_STORE.data.prayrCollection.get(modelId)
         prayrModel.destroy()
+    },
+
+    sharePrayr: function(userObj){
+        console.log(userObj)
+        var newPrayr = new PrayrModel(userObj)
+        newPrayr.save().then(
+            (responseData) => { 
+                console.log(responseData)
+               toastr.success('Prayr Added Successfully!')
+                location.hash = 'prayrs/shares'    
+            },
+            (error) => {
+                toastr.error('Prayr did not save successfully!')
+                console.log(error)
+            }
+        )
+        PRAYR_STORE.data.prayrCollection.add(newPrayr)
     }
 }
 

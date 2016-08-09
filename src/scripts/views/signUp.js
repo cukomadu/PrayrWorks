@@ -43,7 +43,7 @@ const SignUpForm = React.createClass({
 			      					<input type="email" name="email" placeholder="Email Address"/>
 			      					<label>Create a password</label> 
 			      					<input type="password" name="password" placeholder="Password"/> 
-			      					<button className="btn md primary signInUpButton">Create Account</button> 
+			      					<a href="#prayrs/inbox" className="btn md primary signInUpButton">Create Account</a> 
 			   					</div>  
 			   				</form>
 			   			</div>

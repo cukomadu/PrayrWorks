@@ -13,11 +13,11 @@ const Shares = React.createClass({
 
 	componentWillMount: function(){
 		//console.log('fetching prayers >> pryrs.js 15')
-		var fromMePrayerQuery = {
+		var PrayrShares = {
 		    from: User.getCurrentUser().email
 		}
 
-		ACTIONS.fetchPrayrsByQuery(fromMePrayerQuery)
+		ACTIONS.fetchPrayrsByQuery(PrayrShares)
 		
 		PRAYR_STORE.on('updatePrayrList', () => {
 			this.setState(PRAYR_STORE._getData())
@@ -32,34 +32,41 @@ const Shares = React.createClass({
 		return (
 				<div className="Pryrs">
 					<PostHeader />
-					<hr />
-					<h3>Shares{/*<span className="HeadingFromMe">From Me => To Others</span>*/}</h3>
-					<FromMePryrs prayrColl={this.state.prayrCollection}/>
+					<section className="section-label">  
+			            <div className="container-narrow">
+			                <div className="grid-container">
+			                   	<div className="lg-12-x-12 label-muted">
+									<h3>Shares</h3>
+								</div>
+							</div>
+						</div>
+					</section>
+					<SharedPrayrs prayrColl={this.state.prayrCollection}/>
 				</div>
 			)
 	}
 })
 
-const FromMePryrs = React.createClass({
+const SharedPrayrs = React.createClass({
 
 	_createPryr: function(prayrColl){
-		var JSXPryrModel = prayrColl.map((model) => {
-			return <PryrItem key={model.id} prayrmodel={model} />
+		var JSXPrayrModel = prayrColl.map((model) => {
+			return <PrayrItem key={model.id} prayrmodel={model} />
 		})
-		return JSXPryrModel
+		return JSXPrayrModel
 	},
 
 	render: function(){
 		//console.log('this is pryr coll >>>', this.props.pryrColl)
 		return (
-				<div className="MyPryrs">
+				<div className="MyPrayrs">
 					{this._createPryr(this.props.prayrColl)}
 				</div>
 			)
 	}
 })
 
-const PryrItem = React.createClass({
+const PrayrItem = React.createClass({
 	
 
 	_deletePrayr: function(){
@@ -72,28 +79,30 @@ const PryrItem = React.createClass({
 
 		if(this.props.prayrmodel.get('answeredStatus') === true){
 			answeredStatusClass = "Yes"
-			return <p className={answeredStatusClass}>"Yes"</p>
+			return <h3 className={answeredStatusClass}>"Answered"</h3>
 		}
 			answeredStatusClass = "notYet"
-			return <p className={answeredStatusClass}>"Not Yet"</p>		
+			return <h3 className={answeredStatusClass}>"Unanswered"</h3>		
 	},
 
 	render: function(){
 		console.log(this.props.prayrmodel)
 
 		return (
-				<div className="FromMePrayers">
-					<p><strong className="labelFromMe">From Me:</strong> {this.props.prayrmodel.get('from')}</p>
-					<p><strong className="labelFromMe">To Other Users:</strong> {this.props.prayrmodel.get('to')}</p>
-					<p><strong className="labelFromMe">Prayer Title:</strong> {this.props.prayrmodel.get('title')}</p>
-					<p><strong className="labelFromMe">Prayer Details:</strong> {this.props.prayrmodel.get('description')}</p>
-					<label>ANSWERED?{this._setStatus()}</label>
-					{/*<select name="FromMePrayers" defaultValue={this._setStatus()}>
-						<option disabled value="Pending">Pending</option>
-						<option disabled value="Yes">Yes</option>
-					</select>*/}
 
-					<button onClick={this._deletePrayr}>X</button>
+				<div className="container-narrow">
+					<div className="grid-container" id="quick-add">
+						
+						<div className="form-field  lg-12-x-12" >
+							<h3>{`Shared With: ${this.props.prayrmodel.get('title')}`}</h3>	
+							<h3>{`Receiver Email: ${this.props.prayrmodel.get('to')}`}</h3>
+							<h3>{`Shared Prayer: ${this.props.prayrmodel.get('description')}`}</h3>
+							<h3>Track Status:{this._setStatus()}</h3>
+							<div className=" sm-3-x-12 ">
+								<button onClick={this._deletePrayr}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+							</div>
+						</div>
+					</div>
 				</div>
 			)
 	}

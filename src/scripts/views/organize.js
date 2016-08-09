@@ -1,25 +1,26 @@
 import React from 'react'
-import $ from 'jquery'
-import PostHeader from './postHeader'
-import {User, PrayrCollection} from '../models/models'
-import PRAYR_STORE from '../prayrStore'
 import ACTIONS from '../actions'
+import PostHeader from './postHeader'
+import { User, PrayrModel } from '../models/models'
+import PRAYR_STORE from '../prayrStore'
+
+//edit - <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+//share - <i class="fa fa-share-square-o" aria-hidden="true"></i>
+//<label>Add a prayer</label>
 
 const Organize = React.createClass({
-
 	getInitialState: function() {
 		return PRAYR_STORE._getData()
 	},
 
 	componentWillMount: function(){
-		//console.log('fetching prayers >> pryrs.js 15')
-		//console.log('this is clickedView in state passed from store line 16', this.state.currentView)
+
 		
-		var toMePrayerQuery = {
-			to: User.getCurrentUser().email
+		var toMePrayrQuery = {
+			//to: User.getCurrentUser().email
 		}
 		
-		ACTIONS.fetchPrayrsByQuery(toMePrayerQuery)
+		ACTIONS.fetchPrayrsByQuery(toMePrayrQuery)
 		
 		PRAYR_STORE.on('updatePrayrList', () => {
 			this.setState(PRAYR_STORE._getData())
@@ -32,95 +33,39 @@ const Organize = React.createClass({
 	},
 
 	render: function(){
+		let collectionToPassDown
 
-		let collectionToPassDown 
-		
-		if(this.state.currentView === "mypryrlist"){
-			collectionToPassDown = this.state.prayrCollection.where({
-				from: User.getCurrentUser().email, answered: false
-			})
-		} 
-		
-		else if(this.state.currentView === "answered"){
-			collectionToPassDown = this.state.prayrCollection.where({
-				answered: true
-			})
-		}
-		
-		else if(this.state.currentView === "pryrstomefromothers"){
-
-			collectionToPassDown = this.state.prayrCollection.filter((model) => {
-				if((model.get('from') !== User.getCurrentUser().email) && (model.get('answered') === false) ){
-					return true
-				}
-			})
-		}
-		
-		else {
+		if(this.state.currentView === "allpryrstome"){
 			collectionToPassDown = this.state.prayrCollection.where({
 				answered: false
 			})
-			
 		}
-		
-
+			
 		return (
-				<div className="Pryrs">
+				<div>
 					<PostHeader />
-					<hr />
-					<h3>Organize {/*<span className="HeadingToMe">{`To Me <= From Others`}</span>*/}</h3>
-
-					<NavBar />
-					<ToMePryrs prayrColl={collectionToPassDown} 
-					pDisplay={this.state.pDisplay} buttonState={this.state.buttonState}/>
+					<section className="section-label">  
+			            <div className="container-narrow">
+			                <div className="grid-container">
+			                   	<div className="lg-12-x-12 label-muted">
+									<h1>Organize</h1>
+								</div>
+							</div>
+						</div>
+					</section>
+					<PrayrDetailView prayrColl={collectionToPassDown}/>
 				</div>
 			)
 	}
 })
 
-const NavBar = React.createClass({
-
-	_getCurrentView: function(evt){
-		console.log('this is current viewType', evt.target.value)
-		var clickedView = evt.target.value
-
-		ACTIONS.updateCurrentView(clickedView)
-	},
 
 
-    render: function(){
-        return (
-                    <div>
-                    	<button 
-						value="allpryrstome"
-						onClick={this._getCurrentView}
-						>All Prayers To Me</button>
-						
-						<button  
-						value="mypryrlist"
-						onClick={this._getCurrentView}
-						>My Prayer List </button>
-						
-						<button 
-						value="pryrstomefromothers"
-						onClick={this._getCurrentView}
-						>Prayers To Me from Other</button>
-						
-						<button 
-						value="answered"
-						onClick={this._getCurrentView}
-						>Answered</button>
-                    </div>
-            )
-    }
-
-})
-
-const ToMePryrs = React.createClass({
+const PrayrDetailView = React.createClass({
 
 	_createPryr: function(prayrColl){
 		var JSXPryrModel = prayrColl.map((model) => {
-			return <PryrItem key={model.id} prayrmodel={model} modelDisplay={this.props.pDisplay} modelButtonState={this.props.buttonState}/>
+			return <PrayrDetailItem key={model.id} prayrmodel={model} modelDisplay={this.props.pDisplay} modelButtonState={this.props.buttonState}/>
 		})
 		return JSXPryrModel
 	},
@@ -128,14 +73,19 @@ const ToMePryrs = React.createClass({
 	render: function(){
 		console.log('this is pryr coll >>>', this.props.prayrColl)
 		return (
-				<div className="MyPryrs">
-					{this._createPryr(this.props.prayrColl)}
+				<div className="container-narrow">
+					<div className="grid-container">
+						<div className="lg-12-x-12 label-muted">
+							<h2>Your Prayer List</h2>
+						</div>
+						{this._createPryr(this.props.prayrColl)}
+					</div>
 				</div>
 			)
 	}
 })
 
-const PryrItem = React.createClass({
+const PrayrDetailItem = React.createClass({
 
 	_toggleDisplay: function(){
 		console.log('buttonState', this.props.modelButtonState)
@@ -158,32 +108,51 @@ const PryrItem = React.createClass({
 		ACTIONS.updatePrayrModel(clickedModelId)
 	},
 
+	_organizePrayr:function(){
+		console.log('i was clicked')
+		location.hash = "prayrs/organize"
+	},
+
+	_sharePrayr: function(){
+		console.log('i was clicked')
+		location.hash = "prayrs/prayrComposer"	
+	},
+
 	_deletePrayr: function(){
-		var clickedModelId = this.props.pryrmodel.id
+		console.log('i was clicked')
+		var clickedModelId = this.props.prayrmodel.id
 		ACTIONS.deletePrayrModel(clickedModelId)
 	},
 
 	render: function(){
-		var styleObj = {
-			display: this.props.modelDisplay
-		}
-
+		
 		return (
-				<div className="ToMePrayers">
-					<p><strong className="labelToMe">To Me:</strong> {this.props.prayrmodel.get('to')}</p>
-					<button onClick={this._toggleDisplay} className="expand">{this.props.modelButtonState}</button>
-					<div style={styleObj}>
-						<p><strong className="labelToMe">From Me / From Other Users:</strong> {this.props.prayrmodel.get('from')}</p>
-						<p><strong className="labelToMe">Prayer Title:</strong> {this.props.prayrmodel.get('title')}</p>
-						<p><strong className="labelToMe">Prayer Details:</strong> {this.props.prayrmodel.get('description')}</p>
-						<span className="HeadingFromMe">Answered?</span>
-						<input type="checkbox" name="answered" onClick={this._toggleAnswered} />
-						<button onClick={this._deletePrayr}>X</button>
+				<div className="container-narrow">
+					<div className="grid-container" id="quick-add">
+						
+						<div className="form-field  lg-12-x-12" >
+							
+							<h3>{`Details: ${this.props.prayrmodel.get('description')}`}</h3>
+							<h3>{`Answered: ${this.props.prayrmodel.get('answered')}`}</h3>
+						</div>
+						
+						<div className=" sm-3-x-12 ">
+							<button onClick={this._organizePrayr}><i className="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></button>
+						</div>
+						
+						<div className=" sm-3-x-12 ">
+							<button onClick={this._sharePrayr}><i className="fa fa-share-square-o fa-2x" aria-hidden="true"></i></button>
+						</div>
+						
+						<div className=" sm-3-x-12 ">
+							<button onClick={this._deletePrayr}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+						</div>
+						
 					</div>
+
 				</div>
 			)
 	}
 })
-
 
 export default Organize

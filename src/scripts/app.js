@@ -10,6 +10,7 @@ import Inbox from './views/inbox'
 import Add from './views/add'
 import Organize from './views/organize'
 import Shares from './views/shares'
+import PrayrComposer from './views/prayrComposer'
 import Mentions from './views/mentions'
 import Track from './views/track'
 
@@ -25,9 +26,10 @@ const app = function() {
 	  		"prayrs/add": "_showAdd",
 	  		"prayrs/organize": "_showOrganize",
 	  		"prayrs/shares": "_showShares",
+        "prayrs/prayrComposer": "_showPrayrComposer",
   			"prayrs/mentions": "_showMentions",
-		    "prayrs/track": "_showTrack",
-	  		"*catchall": "_redirect"
+		    "prayrs/track": "_showTrack"//,
+	  		//"*catchall": "_redirect"
 	  	},
 
 	  	_showHome: function(){
@@ -62,6 +64,11 @@ const app = function() {
   				ReactDOM.render(<Shares />, document.querySelector('.container'))
   		},
 
+      _showPrayrComposer: function(){
+          //if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
+          ReactDOM.render(<PrayrComposer />, document.querySelector('.container'))
+      },
+
   		_showMentions: function(){
       		//if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
   				ReactDOM.render(<Mentions />, document.querySelector('.container'))
@@ -72,9 +79,9 @@ const app = function() {
   				ReactDOM.render(<Track />, document.querySelector('.container'))
   		},
 
-	  	_redirect: function(){
-	  		location.hash = "home"
-	  	},
+	  	// _redirect: function(){
+	  	// 	location.hash = "home"
+	  	// },
 
 	  	initialize: function(){
 	  		Backbone.history.start()

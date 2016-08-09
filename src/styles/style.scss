@@ -36,6 +36,10 @@ a:focus{
 
 }
 
+input:focus {
+		border-color: $lighterOrange;
+}
+
 // Pre Header View
 
 #leftLogo {
@@ -152,6 +156,7 @@ a:focus{
 		    			width: 100%;
 		    			margin-top: 10%;
 		    			border: none;
+		    			text-align: center;
 		    		}
 
 		    		input:focus {
@@ -209,9 +214,39 @@ a:focus{
 }
 
 
+//Add View
+#user-input {
+    padding: 1%;
+    //border: 1px solid #dadada;
+    //transition: .5s border $lighterOrange;
+    font-size: 1.5rem;
+   // border-radius: 5px;
+   	border: none;
+    display: block;
+    width: 100%;
+    margin: 40px 0 26px;
+	text-align: center;
+	font-family: 'Open Sans', Helvetica, sans-serif;
 
+}
 
+input:focus {
+		border-color: $lighterOrange;
+}
+	
+#quick-add {
+	border: 1px solid $blue;
+	margin-bottom: 2%;
+	border-radius: 5px;
+}
 
+.show {
+	display: block;
+}
+
+.hide {
+	display: none;
+}
 
 .alt-font {
  	font-family: "Palatino", serif;

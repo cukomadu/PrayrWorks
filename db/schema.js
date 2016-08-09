@@ -7,9 +7,9 @@ const Schema = mongoose.Schema;
 // PRAYR LISTS
 // -----------------------
 const prayrSchema = new Schema({
-	title: {type: String, required: true},
-	to: {type: String, required: true},
-	from: {type:String, required: true},
+	title: {type: String, required: false},
+	to: {type: String, required: false},
+	from: {type:String, required: false},
 	reply_to: {type:String},
 	description: {type: String, required: true},
 	category: {type: String},
