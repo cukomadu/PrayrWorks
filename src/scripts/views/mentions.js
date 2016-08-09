@@ -67,7 +67,7 @@ const PrayrMentions = React.createClass({
 
 	_createPryr: function(prayrColl){
 		var JSXPrayrModel = prayrColl.map((model) => {
-			return <PrayrItem key={model.id} prayrmodel={model} modelDisplay={this.props.pDisplay} modelButtonState={this.props.buttonState}/>
+			return <PrayrMentionItem key={model.id} prayrmodel={model} modelDisplay={this.props.pDisplay} modelButtonState={this.props.buttonState}/>
 		})
 		return JSXPrayrModel
 	},
@@ -82,7 +82,7 @@ const PrayrMentions = React.createClass({
 	}
 })
 
-const PrayrItem = React.createClass({
+const PrayrMentionItem = React.createClass({
 
 	
 
