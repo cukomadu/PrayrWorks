@@ -1,0 +1,266 @@
+@import '../../node_modules/margo-css/margo.scss';
+
+//App Colors
+$orange: #f78a4c;
+$blue: #0192B5;
+$white: #ffffff;
+$lightgrey: #aaaaaa;
+$green: #0eae21;
+$darkgray: #1f2532;
+$darkgrey: #3e3e3e;
+$lightgray: #e5e5e5;
+
+//General Styles
+
+* {
+	font-family: 'Open Sans', sans-serif;
+	box-sizing: border-box;
+	background: $white;
+	//background: url('https://s19.postimg.org/w0m804383/backgroundimage.jpg');
+	background-size: cover;
+	color: $darkgrey; //!!!
+
+}
+
+h4 {
+	text-align: right;
+	color: $blue;
+}
+//Pre Login Header
+.Header {
+
+	font-size: 40px;
+		h1 {
+			display: inline-block;
+		}
+	
+	
+		#left {
+			color: $blue;
+		}
+
+		#right {
+			color: $orange;
+		}
+		button {
+			background: $blue;
+			color: $blue;
+		}
+	
+}
+
+.Pryrs {
+	button {
+		color: $darkgrey;
+	}
+}
+
+//NavBar
+.NavBar {
+	margin: 0 auto;
+	width: 800px;
+	position: relative;
+	font-size: 20px;
+
+	.button-primary {
+		//background: $white;
+		color: $blue;
+	}
+
+	.button {
+		color: $darkgrey;
+	}
+
+}
+
+.Home {
+	width: 100%;
+	height: 80vh;
+	//border: 1px solid $lightgrey;
+	text-align: center;
+
+	h2 {
+		color: $blue;
+		margin-top: 20%;
+	}
+
+	p {
+		color: $white;
+	}
+
+	.SignUp {
+		color: $darkgray;
+		background: $orange;
+	}
+}
+
+.loginForm {
+	color: $darkgray;
+	font-weight: 400;
+	font-size: 24px;
+	margin-top: 10%;
+
+
+	button {
+		color: $darkgrey;
+	}
+
+	h3 {
+		color: $blue;
+	}
+
+	input {
+		width: 30%;
+		color: $darkgray;
+
+	}
+
+	.LogIn {
+		color: $darkgray;
+		background: $orange;
+	}
+
+	.email {
+		font-weight: 300;
+		
+	}
+
+	.password {
+		font-weight: 300;
+		margin-top: 5%;
+	}
+
+}
+
+.signUpForm {
+	color: $darkgray;
+	font-weight: 400;
+	font-size: 24px;
+	margin-top: 10%;
+
+	.email {
+		font-weight: 300;
+		
+	}
+
+	.password {
+		font-weight: 300;
+		margin-top: 5%;
+	}
+
+	button {
+		color: $darkgrey;
+	}
+
+	input {
+		width: 30%;
+		color: $darkgray;
+
+	}
+
+	h3 {
+		color: $blue;
+	}
+
+	.SignUp {
+		color: $darkgray;
+		background: $orange;
+		font-size: 14px;
+	}
+}
+
+
+button.expand {
+		display: block;
+		width: 40px;
+		margin: 0 auto;
+		height: 40px;
+		font-size: 24px;
+		line-height: 24px;
+		padding: 0;	
+
+}
+
+
+.Yes{
+	background: $blue;
+	color: $white;
+}
+
+.notYet {
+	background: $orange;
+	color: $white;
+}
+
+
+.button{
+	margin: 2%;
+	font-size: 14px;
+}
+
+.actiontome {
+	color: #ffffff;
+	background: $blue;
+}
+
+.actionfromme {
+	color: #ffffff;
+	background: $orange;
+}
+
+button {
+	margin: 2%;
+}
+
+a {
+	text-decoration: none;
+}
+
+.hide {
+	display: none;
+}
+
+.editor {
+	color: $darkgray;
+}
+
+.isSelected{
+	background: $orange;
+}
+
+.ToMePrayers {
+	border: 1px solid $lightgrey;
+	margin: 5% auto;
+
+	p, span {
+		font-size: 20px;
+	}
+}
+
+.FromMePrayers {
+	border: 1px solid $lightgrey;
+	margin: 5% auto;
+
+	p, span {
+		font-size: 20px;
+	}
+
+}
+
+.labelToMe {
+	color: $blue;
+	//font-size: 14px;
+}
+
+.labelFromMe {
+	color: $blue;
+	//font-size: 14px;
+}
+
+.HeadingFromMe {
+	color: $orange;
+}
+
+.HeadingToMe {
+	color: $blue;
+}

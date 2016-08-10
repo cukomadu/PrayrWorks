@@ -3,6 +3,9 @@ import ACTIONS from '../actions'
 import PostHeader from './postHeader'
 import { User, PrayrModel } from '../models/models'
 
+window.User = User
+console.log('hi')
+
 const Compose = React.createClass({
 
 	render: function(){
@@ -35,24 +38,24 @@ const ComposePrayr = React.createClass({
 	render: function(){
 		
 		return (
-				<div class="container-narrow">
+				<div className="container-narrow">
    					<div>
    						<h3>Compose a prayer</h3>
    					</div>
-   					<form class="form-group grid-container">
+   					<form className="form-group grid-container">
   
-					   <div class="form-field sm-12-x-12 md-6-x-12">
+					   <div className="form-field sm-12-x-12 md-6-x-12">
 					       <label >To </label>
 					       <input type="email" name="email" placeholder="Enter Recipient Email Address"/>
 					   </div>
 
-					   <div class="sm-12-x-12 md-12-x-12 form-field">
+					   <div className="sm-12-x-12 md-12-x-12 form-field">
 					      <label>I Pray</label>
 					      <textarea rows="6"> </textarea>
 					   </div>
   
-					   <div class="sm-6-x-12 md-6-x-12 form-field">
-					       <input type="submit" class="btn md primary signInUpButton" value="submit" />
+					   <div className="sm-6-x-12 md-6-x-12 form-field">
+					       <input type="submit" className="btn md primary signInUpButton" value="submit" />
 					   </div>
 
 					</form>

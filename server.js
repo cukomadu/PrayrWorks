@@ -70,7 +70,7 @@ app.use( '/', indexRouter )
 app.use( '/auth', authRouter )
 app.use( '/api', apiRouter )
 
-app.use(appMiddleWare.errorHandler);
+app.use( appMiddleWare.errorHandler );
 
 app.listen(PORT,function() {
   console.log('\n\n===== listening for requests on port ' + PORT + ' =====\n\n')

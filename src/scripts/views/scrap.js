@@ -1,3 +1,63 @@
+//Home
+import React from 'react'
+import Header from './preloginheader'
+
+//<h2>TRACK. PRAYER. BETTER.</h2>
+//
+const Home = React.createClass({
+
+	render: function(){
+		return(
+				<div>
+					<Header />
+					<div className="Home">
+
+						<h2>The Simplest way to organize, share, and track your prayers.</h2>	
+						<a className="button button-primary SignUp" href="#signup">Create Free Account</a>
+
+					</div>
+					<div>
+					</div>
+				</div>
+			)
+	}
+})
+
+export default Home
+
+//Home
+
+//Pre Header
+import React from 'react'
+import ACTIONS from '../actions'
+
+const Header = React.createClass({
+	render: function(){
+		return (
+				<div className="Header">
+					
+					<NavBar />
+				</div>
+			)
+	}
+})
+
+const NavBar = React.createClass({
+	render: function(){
+		return (
+				<div className="NavBar navLinks">
+					<h1><a href="#home"><span className="AppName" id="left">Prayr</span><span className="AppName" id="right">Works</span></a></h1>
+					<a className="button button-primary" href="#home">Home</a>
+					<a className="button button-primary" href="#login">Log In</a>
+					<a className="button button-primary" href="#signup">Sign Up</a>
+				</div>
+			)
+	}
+})
+
+export default Header
+
+//Compose
 import React from 'react'
 import ACTIONS from '../actions'
 import PostHeader from './postHeader'
