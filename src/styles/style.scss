@@ -10,7 +10,7 @@
 //$darkgrey2: #737373
 $orange: #f7955d;
 $lighterOrange: #fcdbc9;
-$blue: #25c2f2;
+$blue: #0192B5;
 $white: #ffffff;
 $lightgrey: #aaaaaa;
 $lightergrey: #dddddd;
@@ -69,16 +69,28 @@ input:focus {
 
 // Home View
 
+#add-section {
+	margin-top: 3%;
+
+	h2 {
+		color: $blue;
+	}
+
+	p {
+		font-size: 20px;
+	}
+}
+
 .container-hero {
 	min-height: 80vh;
-	background: $darkgrey2;
+	background-image: url("https://hd.unsplash.com/photo-1455641139200-aebc8e447b8a");
 
 	@include media-query($med-screen) {
 			min-height: 580px;
 			//position: relative;
 			//padding: 115px 0 40px;
 			//overflow: hidden;
-			background: $darkgrey2;
+			background-image: url("https://hd.unsplash.com/photo-1455641139200-aebc8e447b8a");
 	}
 
 	.hero {
@@ -188,6 +200,11 @@ input:focus {
 
 // Inbox View
 
+#welcome-page {
+	// border: 2px solid $darkgrey2;
+	// border-radius: 5%;
+}
+
 .label-muted {
 	color: $lightergrey;
 }
@@ -195,6 +212,7 @@ input:focus {
 #subtitle {
 	font-size: large;
 	color: $blue;
+
 }
 
 #inboxButton {
@@ -254,15 +272,17 @@ input:focus {
 
 
 
-#add-section{
-	margin-top: 3%;
-}
+
 
 .addImg {
 	width: 200px;
 	display: block;
 	margin: auto;
-	background-image: url("../images/add.png")
+	//border: 1px solid $orange;
+	//background-image: url("https://s19.postimg.org/xtlwwtdub/noun_573215.png")
+	// border: 1px solid $blue;
+	// font-size: 70px;
+	// border-radius: 100%;
 }
 
 .subNav {

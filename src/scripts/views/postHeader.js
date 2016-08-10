@@ -8,7 +8,7 @@ const PostHeader = React.createClass({
 				<nav className="nav-bar with-logo site-nav-style">
 					<div className="nav-logo logo">
 						<a href="#home">
-							<h1><span id="leftLogo">PRAYR</span><span id="rightLogo">works</span></h1>
+							<h1><span id="leftLogo">Prayr</span><span id="rightLogo">Works</span></h1>
 						</a>
 					</div>
 					<input type="checkbox" className="hamburger-toggler"/>

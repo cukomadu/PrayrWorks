@@ -17,7 +17,7 @@ const Add = React.createClass({
 
 		
 		var toMePrayrQuery = {
-			//to: User.getCurrentUser().email
+			to: User.getCurrentUser().email
 		}
 		
 		ACTIONS.fetchPrayrsByQuery(toMePrayrQuery)

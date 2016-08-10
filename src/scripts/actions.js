@@ -18,8 +18,8 @@ const ACTIONS = {
         User.login(email, password).then(
             (responseData) => {
                toastr.success(`User ${email} Signed In Successfully!`)
-                console.log(responseData)
-                location.hash = 'prayrs/inbox' 
+                console.log('successful signin!', responseData)
+                location.hash = 'prayrs/compose' 
             },
             (error) => {
                 toastr.error('SignIn Unsuccessful')

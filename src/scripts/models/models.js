@@ -55,6 +55,7 @@ UserAuthModel.login = function(email, password) {
 			password: password
 		}
 	}).then((userData) => {
+		console.log("USER???", userData)
 		localStorage[app_name + '_user'] = JSON.stringify(userData)
 		return userData
 	},(err)=> {
@@ -64,12 +65,12 @@ UserAuthModel.login = function(email, password) {
 
 UserAuthModel.logout = function() {
 	return $.getJSON('/auth/logout').then(()=>{
-		localStorage[app_name + '_user'] = null
+		localStorage[app_name + '_user'] = "null"
 	})
 }
 
 UserAuthModel.getCurrentUser = function() {
-	return localStorage[app_name + '_user'] ? JSON.parse(localStorage[app_name + '_user']) : null
+	return localStorage[app_name + '_user'] ? JSON.parse(localStorage[app_name + '_user']) : "null"
 }
 
 

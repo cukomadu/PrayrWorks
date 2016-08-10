@@ -5,7 +5,10 @@ import PreHeader from './preHeader'
 //<PreHeader />
 
 const SignIn = React.createClass({
+
 	render: function(){
+		console.log("shwoing SINGNIN FORM!");
+
 		return (
 				<div className="SignIn">
 					
@@ -18,14 +21,16 @@ const SignIn = React.createClass({
 const SignInForm = React.createClass({
 
 	_getsignInInfo: function(evt){
-		evt.preventDefault()
+		evt.preventDefault();
 		
+		console.log("sendint data to actions", evt.currentTarget.email)
 		ACTIONS.signUserIn(evt.currentTarget.email.value, evt.currentTarget.password.value)
 
 		evt.currentTarget.reset()
 	},
 
 	render: function(){
+		console.log('hellooooo');
 		return (
 				<div className="container-narrow signInView">
 					<div className="signIn-header">
@@ -40,7 +45,7 @@ const SignInForm = React.createClass({
 			      					<input type="email" name="email" placeholder="Email Address"/>
 			      					<label>Password</label> 
 			      					<input type="password" name="password" placeholder="Password"/> 
-			      					<a href="#prayrs/inbox" className="btn md primary signInUpButton">Sign In</a> 
+			   						<input type="submit" className="btn md primary signInUpButton" value="Sign In"/>
 			   					</div>  
 			   				</form>
 			   			</div>

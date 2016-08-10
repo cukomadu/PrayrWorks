@@ -10,8 +10,8 @@ const Home = React.createClass({
 					<div className="container-hero">
 						<header className="hero">
 							<div className="container-narrow hero-text">  
-							     <h2 className="title">The simplest way to organize, share and track your prayers.</h2>
-							     <h4 className="subtitle">Let them know you are praying...</h4>
+							     <h2 className="title">A simple way to organize your prayers.</h2>
+							     <h4 className="subtitle">Compose, send and track all in one place...</h4>
 							</div>
 							<div className="container-narrow"> 
 							 	 <a href="#signUp" id="hero-link" className="btn primary md">Create Free Account</a>
@@ -20,18 +20,18 @@ const Home = React.createClass({
 					</div>
 					<section>
 						<div className="container-narrow">
+							<h1>Powerful Features, Simple Design!</h1>
 							<div className="grid-container">
 								<div id="add-section" className="lg-6-x-12">
-									<h2>Add to your list</h2>
-									<p className="alt-font">Create a prayer.
-										Add as many to your list.
-										A prayer can be anything you want it to be.
-										Save your prayer and access it wherever you go, forever.
+									<h2>Create a prayer</h2>
+									<p className="alt-font">
+										Creating a prayer is simple and easy.
+										Access it wherever you go, forever.
 									</p>
 								</div>
 								<div className="lg-6-x-12">
 									<h2>&nbsp;</h2>
-									<div className="addImg"></div>
+									<div className="addImg"><img src="https://s19.postimg.org/xtlwwtdub/noun_573215.png" /></div>
 								</div>
 							</div>
 						</div>
@@ -41,15 +41,14 @@ const Home = React.createClass({
 						<div className="container-narrow">
 							<div className="grid-container">
 								<div className="lg-6-x-12">
-									<h2>&nbsp;</h2>
-									<div className="addImg"></div>
+									
+									<div className="addImg"><img src="https://s19.postimg.org/zb7d8dikz/noun_530552.png" /></div>
 								</div>
 								<div id="add-section" className="lg-6-x-12">
 									<h2>Organize your list</h2>
-									<p className="alt-font">Edit your list.
-										Add a tag to your prayer.
-										You can have unlimited tags.
-										Access you prayers easily. 
+									<p className="alt-font">
+										Oragnize your prayers in one place.
+										Access them prayers easily. 
 									</p>
 								</div>
 								

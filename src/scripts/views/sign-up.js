@@ -32,18 +32,20 @@ const SignUpForm = React.createClass({
 		return (
 				<div className="container-narrow signInView">
 					<div className="signIn-header">
-						<a href="#home" id="iconColor"><h1 id="iconLogo">PW</h1></a>
+						<a href="#home" id="iconColor"><h1 id="iconLogo">PrayrWorks</h1></a>
 						<h3>Create Account</h3>
 					</div>
 					<div className="form-wrapper">
 						<div className="form-body">
-							<form onSubmit={this._getsignInInfo} className="form-group  grid-container signIn-form">  
+							<form onSubmit={this._getSignUpInfo} className="form-group  grid-container signIn-form">  
 			   					<div className="form-field  sm-4-x-12 sm-4-x-12 sm-4-x-12 form-content"> 
-			      					<label>Your Email Address</label> 
-			      					<input type="email" name="email" placeholder="Email Address"/>
+			   						<label>Enter Full Name</label> 
+			      					<input type="text" name="fullname" placeholder="Full Name"/>
+			      					<label>Enter Email Address</label> 
+			      					<input type="email" name="email" placeholder="Email"/>
 			      					<label>Create a password</label> 
 			      					<input type="password" name="password" placeholder="Password"/> 
-			      					<a href="#prayrs/inbox" className="btn md primary signInUpButton">Create Account</a> 
+			      					<input type="submit" className="btn md primary signInUpButton" value="Create Account"/>
 			   					</div>  
 			   				</form>
 			   			</div>
