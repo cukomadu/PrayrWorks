@@ -51,8 +51,8 @@ const Answered = React.createClass({
 					<section className="section-label">  
 			            <div className="container-narrow">
 			                <div className="grid-container">
-			                   	<div className="lg-12-x-12 label-muted">
-									<h3>Track</h3>
+			                   	<div className="lg-12-x-12 label-muted txt-right">
+									<h1>Answered Prayers</h1>
 								</div>
 							</div>
 						</div>

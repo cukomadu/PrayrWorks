@@ -95,10 +95,10 @@ const PrayrSummary = React.createClass({
                     	<section className="section-label">  
 		                    	<div className="container-narrow">
 		                    	<div className="grid-container">
-		                    		<div className="lg-12-x-12 label-muted">
+		                    		{/*<div className="lg-12-x-12 label-muted">
 										<h1>Welcome, {`${User.getCurrentUser().name}`}</h1>
 
-									</div>
+									</div>*/}
 								</div>
 							</div>
 						</section>

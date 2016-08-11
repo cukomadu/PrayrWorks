@@ -1,7 +1,12 @@
 import React from 'react'
 import ACTIONS from '../actions'
+import { User, PrayrModel } from '../models/models'
 
 const PostHeader = React.createClass({
+
+	_handleSignOut: function(){
+		ACTIONS.signUserOut(User.getCurrentUser().name)
+	},
 	
 	render: function(){
 		return(
@@ -20,7 +25,8 @@ const PostHeader = React.createClass({
 				    </div>
 
 				    <div className="nav-list" id="nav-color">
-					   	<a href="#" onClick={ACTIONS.signUserOut} >Sign Out</a>
+					   	<a href="#" onClick={this._handleSignOut} >Sign Out</a>
+					   	<span id="colorBlue">Welcome, {`${User.getCurrentUser().name}`}</span>
 					   {/*	<a href="#prayrs/track">Track</a>
 					   	<a href="#prayrs/shares">Shares</a>
 					   	<a href="#prayrs/mentions">Mentions</a>

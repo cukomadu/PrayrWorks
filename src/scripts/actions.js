@@ -10,7 +10,7 @@ const ACTIONS = {
     },
 
 	signUserUp: function(userObj){
-		User.register(userObj).then( () => ACTIONS.signUserIn(userObj.email, userObj.password, 'prayrs/compose', userObj.name),
+		User.register(userObj).then( () => ACTIONS.signUserIn(userObj.email, userObj.password, 'prayrs/compose'),
             (error) => {
                 toastr.error('SignUp Unsuccessful')
                 console.log(error)
@@ -18,10 +18,10 @@ const ACTIONS = {
         )
 	},
 
-	signUserIn: function(email, password, sendUserTo, name) {
+	signUserIn: function(email, password, sendUserTo) {
         User.login(email, password).then(
             (responseData) => {
-               toastr.success(`User ${name} Signed In Successfully!`)
+               toastr.success(`User ${User.getCurrentUser().name} Signed In Successfully!`)
                 console.log('successful signin!', responseData)
                 //location.hash = 'prayrs/compose' 
                 ACTIONS.routeTo(sendUserTo)
@@ -33,10 +33,10 @@ const ACTIONS = {
         )
     },
 
-    signUserOut: function() { 
+    signUserOut: function(name) { 
         User.logout().then(
             () => {
-            	toastr.success(`User ${email} Signed Out Successfully!`)
+            	toastr.success(`User ${name} Signed Out Successfully!`)
             	location.hash = 'home'
             }
         )
@@ -65,7 +65,7 @@ const ACTIONS = {
                 answeredStatus: PrayrUpdate.get('answeredStatus') ? false : true
             })
             PrayrUpdate.save().then((responseData) => {
-                //console.log(responseData)
+                console.log(responseData)
                 toastr.success('Prayr Updated Successfully')    
                 },
                 

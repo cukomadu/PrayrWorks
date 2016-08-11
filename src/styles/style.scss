@@ -19,6 +19,32 @@ $darkgrey2: #454545;
 $borderOrange: #dedede;
 $hoverOrange: #fbc4a5;
 
+#colorOrange {
+	background: $orange;
+	//width: 100%;
+	//margin-top: 10%;
+	border: none;
+	//text-align: center;
+}
+
+#colorBlue {
+	color: $blue;
+}
+
+.Answered {
+	background-color: $orange;
+	color: $white;
+}
+
+.UnAnswered {
+	// border: 1px solid $darkgrey;
+	// width: 20px;
+	// height: 20px;
+	background-color: $lightgrey;
+	color: $white;
+	border: none;
+}
+
 //General Styles
 body {
 	font-family: 'Open Sans', Helvetica, sans-serif;
@@ -108,6 +134,7 @@ input:focus {
 #hero-link {
 	background: $orange;
 	border: none;
+	margin-top: 5%;
 }
 
 #nav-color {

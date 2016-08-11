@@ -40,8 +40,8 @@ const ComposePrayr = React.createClass({
 				<div className="container-full">
 					<div className="container-narrow">
 
-	   					<div>
-	   						<h2 className="txt-left">Compose a prayer</h2>
+	   					<div className="txt-right label-muted">
+	   						<h1>Compose</h1>
 	   					</div>
 	   					<form onSubmit={this._getPrayrInfo} className="form-group grid-container">
 	  
@@ -60,7 +60,7 @@ const ComposePrayr = React.createClass({
 						   </div>
 	  
 						   <div className="sm-6-x-12 md-6-x-12 form-field">
-						       <input type="submit" className="btn md primary signInUpButton" value="Send Prayer" />
+						       <input type="submit" id="colorOrange"className="btn md primary" value="Send Prayer" />
 						   </div>
 
 						</form>

@@ -36,13 +36,14 @@ const Inbox = React.createClass({
 	},
 
 	render: function(){
-		let collectionToPassDown
+		let collectionToPassDown = this.state.prayrCollection
 		console.log(this.state.currentView)
-		if(this.state.currentView === "allpryrstome"){
-			collectionToPassDown = this.state.prayrCollection.where({
-				answered: false
-			})
-		}
+		// if(this.state.currentView === "allpryrstome"){
+		// 	collectionToPassDown = this.state.prayrCollection.where({
+		// 		answered: false
+		// 	})
+		// }
+		console.log("colllection passed down??", collectionToPassDown)
 			
 		return (
 				<div>
@@ -108,23 +109,29 @@ const PrayrDetailItem = React.createClass({
 		ACTIONS.updateStateProps(buttonState, pDisplay)
 	},
 
-	// _toggleAnswered: function(){
-	// 	console.log('i was clicked')
-	// 	console.log('answered status line 107', this.props.prayrmodel.get('answered'))
-	// 	var clickedModelId = this.props.prayrmodel.id
-	// 	console.log(clickedModelId)
+	_toggleAnswered: function(){
+		console.log('i was clicked')
+		//console.log('answered status pryrs line 65', this.props.pryrmodel.get('answered'))
+		var clickedModelId = this.props.prayrmodel.id
+		//console.log(clickedModelId)
 		
-	// 	ACTIONS.updatePrayrModel(clickedModelId)
-	// },
+		ACTIONS.updatePrayrModel(clickedModelId)
+	},
 
 	_deletePrayr: function(){
-		console.log('i was clicked')
+		console.log('i was clicked', this.props.prayrmodel.id)
 		var clickedModelId = this.props.prayrmodel.id
 		ACTIONS.deletePrayrModel(clickedModelId)
 	},
 
 	render: function(){
-
+		// var answeredClass
+		// if(this.props.prayrmodel.get('answered') === 'true'){
+		// 	answeredClass = 'Answered'
+		// } else if (this.props.prayrmodel.get('answered') === 'false'){
+		// 	answeredClass = ''
+		// }
+		// console.log(answeredClass)
 		
 		return (
 				<div className="container-full">
@@ -133,16 +140,17 @@ const PrayrDetailItem = React.createClass({
 							
 							<div className="form-field  lg-12-x-12" >
 								<h3>{`From: ${this.props.prayrmodel.get('from')}`}</h3>
-								<h3>{`Title: ${this.props.prayrmodel.get('answered')}`}</h3>
+								<h3>{`Subject: ${this.props.prayrmodel.get('title')}`}</h3>
 								<h3>{`Details: ${this.props.prayrmodel.get('description')}`}</h3>
 								
 							</div>
 							
-							<div className=" sm-3-x-12 ">
-								
+							<div className="sm-3-x-12">
+								<button className="UnAnswered" onClick={this._toggleAnswered}>UnAnswered</button>
+								{/*<input className={answeredClass} type="checkbox" onClick={this._toggleAnswered} />*/}
 							</div>
 							
-							<div className=" sm-3-x-12 ">
+							<div className=" sm-3-x-12">
 								<button onClick={this._deletePrayr}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
 							</div>
 							

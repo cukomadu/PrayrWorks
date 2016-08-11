@@ -13,7 +13,7 @@ const Sent = React.createClass({
 	},
 
 	componentWillMount: function(){
-		//console.log('fetching prayers >> pryrs.js 15')
+		console.log('fetching prayers >> pryrs.js 15')
 		var PrayrShares = {
 		    from: User.getCurrentUser().email
 		}

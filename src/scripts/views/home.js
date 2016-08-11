@@ -1,6 +1,8 @@
 import React from 'react'
 import PreHeader from './preHeader'
 
+//Compose, send and track all in one place...
+
 const Home = React.createClass({
 
 	render: function(){
@@ -11,7 +13,7 @@ const Home = React.createClass({
 						<header className="hero">
 							<div className="container-narrow hero-text">  
 							     <h2 className="title">A simple way to organize your prayers.</h2>
-							     <h4 className="subtitle">Compose, send and track all in one place...</h4>
+							     <h4 className="subtitle"></h4>
 							</div>
 							<div className="container-narrow"> 
 							 	 <a href="#signUp" id="hero-link" className="btn primary md">Create Free Account</a>
@@ -20,7 +22,7 @@ const Home = React.createClass({
 					</div>
 					<section>
 						<div className="container-narrow">
-							<h1>Powerful Features, Simple Design!</h1>
+							<h2 className="txt-center">Powerful Features, Simple Design!</h2>
 							<div className="grid-container">
 								<div id="add-section" className="lg-6-x-12">
 									<h2>Create a prayer</h2>
@@ -68,13 +70,13 @@ const Home = React.createClass({
 								</div>
 								<div className="lg-6-x-12">
 									<h2>&nbsp;</h2>
-									<div className="addImg"></div>
+									<div className="addImg"><img src="https://s19.postimg.org/gey0djp77/noun_15026.png" /></div>
 								</div>
 							</div>
 						</div>
 					</section>
 
-					<section>
+				  {/*	<section>
 						<div className="container-narrow">
 							<div className="grid-container">
 								<div className="lg-6-x-12">
@@ -107,7 +109,7 @@ const Home = React.createClass({
 								</div>
 							</div>
 						</div>
-					</section>
+					</section> */}
 				</div>
 			)
 	}		
