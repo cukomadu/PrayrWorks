@@ -24,7 +24,7 @@ const SignInForm = React.createClass({
 		evt.preventDefault();
 		
 		console.log("sendint data to actions", evt.currentTarget.email)
-		ACTIONS.signUserIn(evt.currentTarget.email.value, evt.currentTarget.password.value)
+		ACTIONS.signUserIn(evt.currentTarget.email.value, evt.currentTarget.password.value, 'prayrs/dashboard')
 
 		evt.currentTarget.reset()
 	},
@@ -34,7 +34,7 @@ const SignInForm = React.createClass({
 		return (
 				<div className="container-narrow signInView">
 					<div className="signIn-header">
-						<a href="#home"><h1 id="iconLogo">PW</h1></a>
+						<a href="#home"><h1 id="iconLogo">PrayrWorks</h1></a>
 						<h3>Sign In</h3>
 					</div>
 					<div className="form-wrapper">

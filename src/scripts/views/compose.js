@@ -1,10 +1,9 @@
 import React from 'react'
 import ACTIONS from '../actions'
 import PostHeader from './postHeader'
+import Sidebar from './sidebar'
 import { User, PrayrModel } from '../models/models'
 
-window.User = User
-console.log('hi')
 
 const Compose = React.createClass({
 
@@ -12,6 +11,7 @@ const Compose = React.createClass({
 		return (
 				<div>
 					<PostHeader />
+					<Sidebar />
 					<ComposePrayr />
 				</div>
 			)
@@ -27,7 +27,6 @@ const ComposePrayr = React.createClass({
 		ACTIONS.savePrayrModel({
 			to: evt.currentTarget.to.value,
 			from: User.getCurrentUser().email,
-			title: evt.currentTarget.title.value,
 			description: evt.currentTarget.description.value
 		})
 
@@ -38,33 +37,39 @@ const ComposePrayr = React.createClass({
 	render: function(){
 		
 		return (
-				<div className="container-narrow">
-   					<div>
-   						<h3>Compose a prayer</h3>
-   					</div>
-   					<form className="form-group grid-container">
-  
-					   <div className="form-field sm-12-x-12 md-6-x-12">
-					       <label >To </label>
-					       <input type="email" name="email" placeholder="Enter Recipient Email Address"/>
-					   </div>
+				<div className="container-full">
+					<div className="container-narrow">
 
-					   <div className="sm-12-x-12 md-12-x-12 form-field">
-					      <label>I Pray</label>
-					      <textarea rows="6"> </textarea>
-					   </div>
-  
-					   <div className="sm-6-x-12 md-6-x-12 form-field">
-					       <input type="submit" className="btn md primary signInUpButton" value="submit" />
-					   </div>
+	   					<div>
+	   						<h2 className="txt-left">Compose a prayer</h2>
+	   					</div>
+	   					<form onSubmit={this._getPrayrInfo} className="form-group grid-container">
+	  
+						   <div className="form-field sm-12-x-12 md-6-x-12">
+						       <label >To </label>
+						       <input type="email" name="to" placeholder="Enter recipient email address"/>
+						   </div>
+						   <div className="form-field sm-12-x-12 md-6-x-12">
+						       <label >Subject</label>
+						       <input type="text" name="title" placeholder="e.g. Job, Family, Life"/>
+						   </div>
 
-					</form>
+						   <div className="sm-12-x-12 md-12-x-12 form-field">
+						      <label>Description</label>
+						      <textarea rows="6" name="description" placeholder="Type your prayer here"></textarea>
+						   </div>
+	  
+						   <div className="sm-6-x-12 md-6-x-12 form-field">
+						       <input type="submit" className="btn md primary signInUpButton" value="Send Prayer" />
+						   </div>
 
+						</form>
 
+					</div>
 				</div>
 			)
 	}
 })
 
-export default ComposePrayr
+export default Compose
 

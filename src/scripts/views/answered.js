@@ -1,11 +1,12 @@
 import React from 'react'
 import $ from 'jquery'
 import PostHeader from './postHeader'
+import Sidebar from './sidebar'
 import {User, PrayrCollection} from '../models/models'
 import PRAYR_STORE from '../prayrStore'
 import ACTIONS from '../actions'
 
-const Track = React.createClass({
+const Answered = React.createClass({
 
 	getInitialState: function() {
 		return PRAYR_STORE._getData()
@@ -46,6 +47,7 @@ const Track = React.createClass({
 		return (
 				<div>
 					<PostHeader />
+					<Sidebar />
 					<section className="section-label">  
 			            <div className="container-narrow">
 			                <div className="grid-container">
@@ -128,4 +130,4 @@ const TrackPrayrItem = React.createClass({
 })
 
 
-export default Track
+export default Answered

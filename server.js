@@ -51,6 +51,8 @@ connectToDB(global.PROJECT_NAME)
 // =========
 // APPLICATION MIDDLEWARE 
 // =========
+app.disable('etag');
+
 app.use( express.static( __dirname + '/dist/assets') );
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded() );

@@ -43,7 +43,7 @@ authRouter
         delete user.password
         res.json(user)
       }
-    })(req,res,next)  
+    }) (req,res,next)  
   })
   .get('/logout', function (req, res) {
     if (req.user) {

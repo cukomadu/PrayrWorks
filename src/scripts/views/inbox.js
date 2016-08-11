@@ -1,19 +1,29 @@
 import React from 'react'
-import PostHeader from './postHeader'
-import PRAYR_STORE from '../prayrStore'
 import ACTIONS from '../actions'
-import {User, PrayrCollection} from '../models/models'
+import PostHeader from './postHeader'
+import Sidebar from './sidebar'
+import { User, PrayrModel } from '../models/models'
+import PRAYR_STORE from '../prayrStore'
 
+//edit - <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+//share - <i class="fa fa-share-square-o" aria-hidden="true"></i>
+//<label>Add a prayer</label>
 
 const Inbox = React.createClass({
-	
 	getInitialState: function() {
 		return PRAYR_STORE._getData()
 	},
 
 	componentWillMount: function(){
 
-		ACTIONS.fetchPrayrsByQuery()
+		
+		var toMePrayrQuery = {
+			to: User.getCurrentUser().email
+		}
+
+		
+
+		ACTIONS.fetchPrayrsByQuery(toMePrayrQuery)
 		
 		PRAYR_STORE.on('updatePrayrList', () => {
 			this.setState(PRAYR_STORE._getData())
@@ -22,141 +32,126 @@ const Inbox = React.createClass({
 
 	componentWillUnmount: function(){
 		PRAYR_STORE.off('updatePrayrList')
+
 	},
 
 	render: function(){
-		console.log('state in dashboard', this.state.prayrCollection)
+		let collectionToPassDown
+		console.log(this.state.currentView)
+		if(this.state.currentView === "allpryrstome"){
+			collectionToPassDown = this.state.prayrCollection.where({
+				answered: false
+			})
+		}
+			
 		return (
 				<div>
 					<PostHeader />
-					<PrayrSummary prayrColl={this.state.prayrCollection}/>
+					<Sidebar />
+					
+					<PrayrDetailView prayrColl={collectionToPassDown} />
 				</div>
 			)
 	}
-		
 })
 
-const PrayrSummary = React.createClass({
 
-	_calculateSharedAnswered: function(prayrColl){
-		var filteredColl = prayrColl.filter((model) => {
-			if((model.get('from') === User.getCurrentUser().email) && (model.get('answeredStatus') === true)){
-				return true
-			}	
-		})
 
-		//return filteredColl.length
-		var collLength = filteredColl.length
-		console.log('this is collLength', collLength)
-		if(collLength < 2){
-			return <p className="text-filtered">You have shared a total of <a href="#prayrs/shares">{collLength} </a> prayer!</p>
-		}
-		else {
-			return <p className="text-filtered">You have shared a total of <a href="#prayrs/shares">{collLength} </a> prayers!</p>
-		}
-        
+const PrayrDetailView = React.createClass({
+
+	_createPryr: function(prayrColl){
+		var JSXPryrModel = prayrColl.map((model) => {
+			return <PrayrDetailItem key={model.id} prayrmodel={model} 
+			modelDisplay={this.props.pDisplay} 
+			modelButtonState={this.props.buttonState}/>
+		}).reverse()
+
+		return JSXPryrModel
 	},
 
-	_calculateNewPryrs: function(prayrColl){
-		var filteredColl = prayrColl.filter((model) => {
-			if((model.get('to') === User.getCurrentUser().email) && (model.get('viewStatus') === false)){
-				return true
-			}	
-		})
-		var collLength = filteredColl.length
-		if(collLength < 2){
-			return <p className="text-filtered">You have <a href="#prayrs/organize">{collLength} new</a> prayer in your inbox!</p>
-		}
-		else {
-			return <p className="text-filtered">You have <a href="#prayrs/organize">{collLength} new</a> prayers in your inbox!</p>
-		}
-	},
-
-	_calculateMyAnswered: function(prayrColl){
-		var filteredColl = prayrColl.filter((model) => {
-			if((model.get('to') === User.getCurrentUser().email) && (model.get('answered') === true)){
-				return true
-			}	
-		})
-		var collLength = filteredColl.length
-		if(collLength < 2){
-			return <p className="text-filtered">You have been mentioned in <a href="#prayrs/mentions">{collLength} new</a> prayer! </p>
-		}
-		else {
-			return <p className="text-filtered">You have been mentioned in <a href="#prayrs/mentions">{collLength} new</a> prayers!</p>
-		}
-	},
-
-    render: function(){
-        return (
-                    <div>
-                    	<section className="section-label">  
-		                    	<div className="container-narrow">
-		                    	<div className="grid-container">
-		                    		<div className="lg-12-x-12 label-muted">
-										<h1>Welcome, {`${User.getCurrentUser()}`}</h1>
-
-									</div>
+	render: function(){
+		console.log('this is pryr coll >>>', this.props.prayrColl)
+		return (
+				<div className="container-full">
+					<section className="section-label">  
+			            <div className="container-narrow">
+			                <div className="grid-container">
+			                   	<div className="lg-12-x-12 label-muted">
+									<h1>Inbox</h1>
 								</div>
 							</div>
-						</section>
-						<section >
-							<div className="container-narrow">
-		                    	<div className="grid-container">
-		                    		<div id="welcome-page" className="lg-12-x-12">
-					                    <h2>Inbox - <span id="subtitle">Someone is praying for you</span></h2>
-					                    {this._calculateNewPryrs(this.props.prayrColl)}
-					                    <a href="#prayrs/add" className="btn md primary" id="inboxButton">View Inbox</a>
-			                    	</div>
-			                    	<hr/>
-			                    	{/*<div className="lg-12-x-12">
-										<h2>&nbsp;</h2>
-										<div className="addImg"></div>
-									</div>*/}
-						
-			                    </div>
-			                </div>
-		                </section>
-		                <section >
-							<div className="container-narrow">
-		                    	<div className="grid-container">
-		                    		{/*<div className="lg-12-x-12">
-										<h2>&nbsp;</h2>
-										<div className="addImg"></div>
-									</div>*/}
-		                    		<div id="welcome-page" className="lg-12-x-12">
-					                    <h2>Sent Prayers - <span id="subtitle">Let them know you are praying</span></h2>
-					                   
-					                    {this._calculateMyAnswered(this.props.prayrColl)}
-					                    <a href="#prayrs/mentions" className="btn md primary" id="inboxButton">View Sent</a>
-			                    	</div>
-									<hr/>              
-			                    </div>
-			                </div>
-		                </section>
-		                <section>
-							<div className="container-narrow">
-		                    	<div className="grid-container">
-		                    		<div id="welcome-page" className="lg-12-x-12">
-					                    <h2>Answered Prayers - <span id="subtitle">Prayer really works</span></h2>
-					                    
-					                    {this._calculateSharedAnswered(this.props.prayrColl)}
-					                    <a href="#prayrs/shares" className="btn md primary" id="inboxButton">View Answered</a>
-			                    	</div>
-			                    	{/*<div className="lg-12-x-12">
-										<h2>&nbsp;</h2>
-										<div className="addImg"></div>
-									</div>*/}
-			                  
-			                    </div>
-			                </div>
-		                </section>
-		               
-                    </div>
-            )
-    }
-
+						</div>
+					</section>
+					<div className="container-narrow">
+						<div className="grid-container">
+							
+							{this._createPryr(this.props.prayrColl)}
+						</div>
+					</div>
+				</div>
+			)
+	}
 })
-	
+
+const PrayrDetailItem = React.createClass({
+
+	_toggleDisplay: function(){
+		console.log('buttonState', this.props.modelButtonState)
+		console.log('pDisplay', this.props.modelDisplay)
+
+		var pDisplay = this.props.modelDisplay,
+			buttonState = this.props.modelButtonState,
+			clickedModelId = this.props.pryrmodel.id
+
+		ACTIONS.updateViewedStatus(clickedModelId)
+
+		ACTIONS.updateStateProps(buttonState, pDisplay)
+	},
+
+	// _toggleAnswered: function(){
+	// 	console.log('i was clicked')
+	// 	console.log('answered status line 107', this.props.prayrmodel.get('answered'))
+	// 	var clickedModelId = this.props.prayrmodel.id
+	// 	console.log(clickedModelId)
+		
+	// 	ACTIONS.updatePrayrModel(clickedModelId)
+	// },
+
+	_deletePrayr: function(){
+		console.log('i was clicked')
+		var clickedModelId = this.props.prayrmodel.id
+		ACTIONS.deletePrayrModel(clickedModelId)
+	},
+
+	render: function(){
+
+		
+		return (
+				<div className="container-full">
+					<div className="container-narrow">
+						<div className="grid-container" id="quick-add">
+							
+							<div className="form-field  lg-12-x-12" >
+								<h3>{`From: ${this.props.prayrmodel.get('from')}`}</h3>
+								<h3>{`Title: ${this.props.prayrmodel.get('answered')}`}</h3>
+								<h3>{`Details: ${this.props.prayrmodel.get('description')}`}</h3>
+								
+							</div>
+							
+							<div className=" sm-3-x-12 ">
+								
+							</div>
+							
+							<div className=" sm-3-x-12 ">
+								<button onClick={this._deletePrayr}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+							</div>
+							
+						</div>
+
+					</div>
+				</div>
+			)
+	}
+})
 
 export default Inbox

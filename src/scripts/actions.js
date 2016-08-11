@@ -5,8 +5,12 @@ import toastr from 'toastr'
 
 const ACTIONS = {
 
+    routeTo: function(route){
+        location.hash = route
+    },
+
 	signUserUp: function(userObj){
-		User.register(userObj).then( () => ACTIONS.signUserIn(userObj.email, userObj.password),
+		User.register(userObj).then( () => ACTIONS.signUserIn(userObj.email, userObj.password, 'prayrs/compose', userObj.name),
             (error) => {
                 toastr.error('SignUp Unsuccessful')
                 console.log(error)
@@ -14,12 +18,13 @@ const ACTIONS = {
         )
 	},
 
-	signUserIn: function(email, password) {
+	signUserIn: function(email, password, sendUserTo, name) {
         User.login(email, password).then(
             (responseData) => {
-               toastr.success(`User ${email} Signed In Successfully!`)
+               toastr.success(`User ${name} Signed In Successfully!`)
                 console.log('successful signin!', responseData)
-                location.hash = 'prayrs/compose' 
+                //location.hash = 'prayrs/compose' 
+                ACTIONS.routeTo(sendUserTo)
             },
             (error) => {
                 toastr.error('SignIn Unsuccessful')
@@ -42,15 +47,14 @@ const ACTIONS = {
         newPrayr.save().then(
             (responseData) => { 
                 console.log(responseData)
-               toastr.success('Prayr Added Successfully!')
-        		location.hash = 'prayrs/add'    
+               toastr.success('Prayer Sent Successfully!')
+        		location.hash = 'prayrs/sent'    
             },
             (error) => {
                 toastr.error('Prayr did not save successfully!')
                 console.log(error)
             }
         )
-        PRAYR_STORE.data.prayrCollection.add(newPrayr)
     },
 
     updatePrayrModel: function(modelId){
@@ -108,8 +112,11 @@ const ACTIONS = {
     },
              
     fetchPrayrsByQuery: function(queryObj){
-        PRAYR_STORE.data.prayrCollection.fetch({
+        let prayrCollection = new PrayrCollection()
+        prayrCollection.fetch({
             data: queryObj
+        }).then( ()=> {
+              PRAYR_STORE._set('prayrCollection', prayrCollection )
         })
     },
 

@@ -21,17 +21,12 @@ const PostHeader = React.createClass({
 
 				    <div className="nav-list" id="nav-color">
 					   	<a href="#" onClick={ACTIONS.signUserOut} >Sign Out</a>
-					   	<a href="#prayrs/track">Track</a>
+					   {/*	<a href="#prayrs/track">Track</a>
 					   	<a href="#prayrs/shares">Shares</a>
 					   	<a href="#prayrs/mentions">Mentions</a>
 					   	<a href="#prayrs/organize">Organize</a>
 					    <a href="#prayrs/add">Add</a>
-					    <a href="#prayrs/inbox">Inbox</a>
-
-						
-						
-						
-						
+					    <a href="#prayrs/inbox">Inbox</a> */}	
 				    </div>
 					
 				</nav>

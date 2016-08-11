@@ -22,7 +22,8 @@ const SignUpForm = React.createClass({
 		
 		ACTIONS.signUserUp({
 			email: evt.currentTarget.email.value, 
-			password: evt.currentTarget.password.value
+			password: evt.currentTarget.password.value,
+			name: evt.currentTarget.fullname.value
 		})
 
 		evt.currentTarget.reset()

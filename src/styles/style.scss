@@ -51,7 +51,10 @@ input:focus {
 }
 
 .nav-bar.with-logo .nav-logo {
-	top: 31%;
+//	top: 31%;
+	h1 {
+		margin: 0;
+	}
 }
 
 .site-nav-style {

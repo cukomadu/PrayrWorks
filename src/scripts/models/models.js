@@ -1,8 +1,8 @@
 import Backbone from 'backbone'
 import $ from 'jquery'
-import {app_name} from '../app'
+// import {app_name} from '../app'
 
-
+let app_name = "PrayrWorks"
 ///////////////////////////////
 // Prayr Model and Collection
 //////////////////////////////
