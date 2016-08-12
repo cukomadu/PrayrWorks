@@ -26,8 +26,8 @@ const Home = React.createClass({
 					<div className="container-full site-features">
 						<div className="container-narrow">
 							<section className="segment">
-								<div className="grid-container grid-border">
-									<div className="sm-12-x-12 md-6-x-12 project-description">
+								<div className="grid-container">
+									<div className="sm-12-x-12 md-6-x-12">
 								        <h2>
 								            <strong id="colorBlue">Organize</strong>
 								        </h2>
@@ -35,7 +35,7 @@ const Home = React.createClass({
 										</p>
 										<div className="addImg"><img src="https://s19.postimg.org/zb7d8dikz/noun_530552.png" /></div>
         							</div>
-        							<div className="sm-12-x-12 md-6-x-12 project-description">
+        							<div className="sm-12-x-12 md-6-x-12">
 								        <h2>
 								            <strong id="colorBlue">Create</strong>
 								        </h2>
@@ -48,14 +48,14 @@ const Home = React.createClass({
 								</div>
 								
 								<div className="grid-container">
-									<div className="sm-12-x-12 md-6-x-12 project-description">
+									<div className="sm-12-x-12 md-6-x-12">
 								        <h2>
 								            <strong id="colorBlue">Share</strong>
 								        </h2>
 								        <p>Send a prayer to anyone with an email address.</p>
 								        <div className="addImg"><img src="https://s19.postimg.org/gey0djp77/noun_15026.png" /></div>
         							</div>
-        							<div className="sm-12-x-12 md-6-x-12 project-description">
+        							<div className="sm-12-x-12 md-6-x-12">
 								        <h2>
 								            <strong id="colorBlue">Track</strong>
 								        </h2>

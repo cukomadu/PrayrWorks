@@ -193,8 +193,8 @@ input:focus {
 
 .container-hero {
 	min-height: 80vh;
-	background-image: url("https://unsplash.com/search/outdoor?photo=YN_JWPDYVoM");
-	//background: $blue;
+	//background-image: url("https://unsplash.com/search/outdoor?photo=YN_JWPDYVoM");
+	background: $blue;
 	//opacity: 0.5;
 
 	@include media-query($med-screen) {
@@ -202,8 +202,8 @@ input:focus {
 			//position: relative;
 			//padding: 115px 0 40px;
 			//overflow: hidden;
-			background-image: url("https://unsplash.com/search/outdoor?photo=YN_JWPDYVoM");
-			//background: $blue;
+			//background-image: url("https://unsplash.com/search/outdoor?photo=YN_JWPDYVoM");
+			background: $blue;
 			//opacity: 0.8;
 	}
 
