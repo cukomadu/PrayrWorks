@@ -22,7 +22,7 @@ const Home = React.createClass({
 					</div>
 					<section>
 						<div className="container-narrow">
-							<h2 className="txt-center">Powerful Features, Simple Design!</h2>
+							<h2 className="txt-center">Powerful Features! Simple Design!</h2>
 							<div className="grid-container">
 								<div id="add-section" className="lg-6-x-12">
 									<h2>Create a prayer</h2>

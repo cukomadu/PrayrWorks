@@ -3,6 +3,7 @@ import PostHeader from './postHeader'
 import PRAYR_STORE from '../prayrStore'
 import ACTIONS from '../actions'
 import Sidebar from './sidebar'
+import SidebarToggler from './sidebar-toggler'
 import {User, PrayrCollection} from '../models/models'
 
 
@@ -30,6 +31,8 @@ const DashBoard = React.createClass({
 		return (
 				<div>
 					<PostHeader />
+					<input type="checkbox" className="sidebar-toggler"/>
+					<SidebarToggler/>
 					<Sidebar />
 					<PrayrSummary prayrColl={this.state.prayrCollection}/>
 				</div>
@@ -91,7 +94,7 @@ const PrayrSummary = React.createClass({
 
     render: function(){
         return (
-                    <div>
+                    <div className="container-full">
                     	<section className="section-label">  
 		                    	<div className="container-narrow">
 		                    	<div className="grid-container">

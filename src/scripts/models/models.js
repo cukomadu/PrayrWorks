@@ -17,6 +17,19 @@ const PrayrCollection = Backbone.Collection.extend({
 	url: '/api/prayrs'
 })
 
+///////////////////////////////
+// Personal Prayr Model and Collection
+//////////////////////////////
+
+const PersonalPrayrModel = Backbone.Model.extend({
+	urlRoot: '/api/personalprayrs',
+	idAttribute: '_id'
+})
+
+const PersonalPrayrCollection = Backbone.Collection.extend({
+	model: PersonalPrayrModel,
+	url: '/api/personalprayrs'
+})
 
 
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
@@ -84,4 +97,4 @@ const User = UserAuthModel.extend({
 	}
 })
 
-export { User, PrayrModel, PrayrCollection }
+export { User, PrayrModel, PrayrCollection, PersonalPrayrModel, PersonalPrayrCollection }

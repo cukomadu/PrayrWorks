@@ -1,4 +1,4 @@
-import { User, PrayrModel, PrayrCollection } from './models/models'
+import { User, PrayrModel,  PrayrCollection, PersonalPrayrModel, PersonalPrayrCollection} from './models/models'
 import PRAYR_STORE from './prayrStore'
 import toastr from 'toastr'
 
@@ -57,17 +57,42 @@ const ACTIONS = {
         )
     },
 
+    savePersonalPrayrModel: function(prayrObj){
+        var newPersonalPrayr = new PersonalPrayrModel(prayrObj)
+        var personalPrayrCollectionCopy = new PersonalPrayrCollection( PRAYR_STORE.data.personalPrayrCollection.toJSON() )
+
+
+        newPersonalPrayr.save().then(
+            (responseData) => { 
+                toastr.success('Personal Prayr saved!')
+
+                personalPrayrCollectionCopy.add(newPersonalPrayr)
+                PRAYR_STORE._set( 'personalPrayrCollection', personalPrayrCollectionCopy )
+                    
+            },
+            (error) => {
+                toastr.error('Prayr did not save successfully!')
+                console.log(error)
+            }
+        )
+    },
+
     updatePrayrModel: function(modelId){
-        let PrayrUpdate = PRAYR_STORE.data.prayrCollection.get(modelId)
+        let prayrCollectionCopy = new PrayrCollection( PRAYR_STORE.data.prayrCollection.toJSON() )
+
+        let prayrModelUpdate = PRAYR_STORE.data.prayrCollection.get(modelId)
          
-            PrayrUpdate.set({
-                answered: PrayrUpdate.get('answered') ? false : true,
-                answeredStatus: PrayrUpdate.get('answeredStatus') ? false : true
+            prayrModelUpdate.set({
+                answered: prayrModelUpdate.get('answered') ? false : true,
+                answeredStatus: prayrModelUpdate.get('answeredStatus') ? false : true
             })
-            PrayrUpdate.save().then((responseData) => {
+            
+            prayrModelUpdate.save().then((responseData) => {
                 console.log(responseData)
-                toastr.success('Prayr Updated Successfully')    
-                },
+                toastr.success('Prayr Updated Successfully')
+                prayrCollectionCopy.set(prayrModelUpdate)
+                PRAYR_STORE._set( 'prayrCollection', prayrCollectionCopy )    
+                },               
                 
                 (error) => {
                   //  toastr.error('Pryr Update Unsuccessful')
@@ -75,7 +100,29 @@ const ACTIONS = {
                 }   
             )
 
-            PRAYR_STORE.data.prayrCollection.trigger('update')
+    },
+
+    updatePersonalPrayrModel: function(modelId){
+        let personalPrayrCollectionCopy = new PersonalPrayrCollection( PRAYR_STORE.data.personalPrayrCollection.toJSON() )
+
+        let personalPrayrModel = PRAYR_STORE.data.personalPrayrCollection.get(modelId)
+         
+            personalPrayrModel.set({
+                answered: personalPrayrModel.get('answered') ? false : true
+            })
+            
+            personalPrayrModel.save().then((responseData) => {
+                console.log(responseData)
+                toastr.success('PersonalPrayr Updated Successfully')
+                personalPrayrCollectionCopy.set(personalPrayrModel)
+                PRAYR_STORE._set( 'personalPrayrCollection', personalPrayrCollectionCopy )    
+                },               
+                
+                (error) => {
+                  //  toastr.error('Pryr Update Unsuccessful')
+                    //console.log(error)
+                }   
+            )
     },
 
     updateViewedStatus: function(modelId){
@@ -120,13 +167,42 @@ const ACTIONS = {
         })
     },
 
+    fetchPersonalPrayrs: function(queryObj){
+        let personalPrayrCollection = new PersonalPrayrCollection()
+        personalPrayrCollection.fetch({
+            data: queryObj
+        }).then( ()=> {
+              PRAYR_STORE._set('personalPrayrCollection', personalPrayrCollection )
+        })
+    },
+
     updateCurrentView: function(clickedView){
        PRAYR_STORE._set('currentView', clickedView)
     },
 
+
+
     deletePrayrModel: function(modelId){
-        let prayrModel = PRAYR_STORE.data.prayrCollection.get(modelId)
-        prayrModel.destroy()
+        let prayrCollectionCopy = new PrayrCollection( PRAYR_STORE.data.prayrCollection.toJSON() )
+        let prayrModel = prayrCollectionCopy.get(modelId)
+
+        prayrModel.destroy().then(()=>{
+            prayrCollectionCopy.remove(prayrModel)
+            PRAYR_STORE._set('prayrCollection', prayrCollectionCopy )
+
+        })
+    },
+
+    deletePersonalPrayrModel: function(modelId){
+        let personalPrayrCollectionCopy = new PersonalPrayrCollection( PRAYR_STORE.data.personalPrayrCollection.toJSON() )
+        let personalPrayrModel = personalPrayrCollectionCopy.get(modelId)
+
+        personalPrayrModel.destroy().then(()=>{
+            console.log('prayr deleted!!')
+            personalPrayrCollectionCopy.remove(personalPrayrModel)
+            PRAYR_STORE._set('personalPrayrCollection', personalPrayrCollectionCopy )
+
+        })
     },
 
     sharePrayr: function(userObj){

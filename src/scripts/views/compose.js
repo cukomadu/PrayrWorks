@@ -2,6 +2,7 @@ import React from 'react'
 import ACTIONS from '../actions'
 import PostHeader from './postHeader'
 import Sidebar from './sidebar'
+import SidebarToggler from './sidebar-toggler'
 import { User, PrayrModel } from '../models/models'
 
 
@@ -11,6 +12,8 @@ const Compose = React.createClass({
 		return (
 				<div>
 					<PostHeader />
+					<input type="checkbox" className="sidebar-toggler"/>
+					<SidebarToggler/>
 					<Sidebar />
 					<ComposePrayr />
 				</div>
@@ -27,6 +30,7 @@ const ComposePrayr = React.createClass({
 		ACTIONS.savePrayrModel({
 			to: evt.currentTarget.to.value,
 			from: User.getCurrentUser().email,
+			title: evt.currentTarget.title.value,
 			description: evt.currentTarget.description.value
 		})
 

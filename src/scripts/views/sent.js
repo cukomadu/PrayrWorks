@@ -1,6 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
 import PostHeader from './postHeader'
+import SidebarToggler from './sidebar-toggler'
 import Sidebar from './sidebar'
 import {User, PrayrCollection} from '../models/models'
 import PRAYR_STORE from '../prayrStore'
@@ -33,6 +34,8 @@ const Sent = React.createClass({
 		return (
 				<div className="Pryrs">
 					<PostHeader />
+					<input type="checkbox" className="sidebar-toggler"/>
+					<SidebarToggler/>
 					<Sidebar />
 					
 					<SentPrayrs prayrColl={this.state.prayrCollection}/>
@@ -86,11 +89,11 @@ const PrayrItem = React.createClass({
 		var answeredStatusClass
 
 		if(this.props.prayrmodel.get('answeredStatus') === true){
-			answeredStatusClass = "Yes"
-			return <span className={answeredStatusClass}>"Answered"</span>
+			answeredStatusClass = "answered-per-receiver"
+			return <span className={"bg-success"}>Answered</span>
 		}
-			answeredStatusClass = "notYet"
-			return <span className={answeredStatusClass}>"Unanswered"</span>		
+			answeredStatusClass = "unanswered-per-receiver"
+			return <span className={"bg-warn"}>Unanswered</span>		
 	},
 
 	render: function(){
@@ -105,7 +108,7 @@ const PrayrItem = React.createClass({
 								<h3>{`To: ${this.props.prayrmodel.get('to')}`}</h3>
 								<h3>{`Subject: ${this.props.prayrmodel.get('title')}`}</h3>
 								<h3>{`Description: ${this.props.prayrmodel.get('description')}`}</h3>
-								<h3>Track Status:{this._setStatus}</h3>
+								<h3>Answer Status: {this._setStatus()}</h3>
 								<div className=" sm-3-x-12 ">
 									<button onClick={this._deletePrayr}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
 								</div>

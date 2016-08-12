@@ -2,6 +2,7 @@ import React from 'react'
 import ACTIONS from '../actions'
 import PostHeader from './postHeader'
 import Sidebar from './sidebar'
+import SidebarToggler from './sidebar-toggler'
 import { User, PrayrModel } from '../models/models'
 import PRAYR_STORE from '../prayrStore'
 
@@ -38,16 +39,18 @@ const Inbox = React.createClass({
 	render: function(){
 		let collectionToPassDown = this.state.prayrCollection
 		console.log(this.state.currentView)
-		// if(this.state.currentView === "allpryrstome"){
-		// 	collectionToPassDown = this.state.prayrCollection.where({
-		// 		answered: false
-		// 	})
-		// }
+		//if(this.state.currentView === "allpryrstome"){
+			collectionToPassDown = this.state.prayrCollection.where({
+				answered: false
+			})
+	//	}
 		console.log("colllection passed down??", collectionToPassDown)
 			
 		return (
 				<div>
 					<PostHeader />
+					<input type="checkbox" className="sidebar-toggler"/>
+					<SidebarToggler/>
 					<Sidebar />
 					
 					<PrayrDetailView prayrColl={collectionToPassDown} />
@@ -114,7 +117,6 @@ const PrayrDetailItem = React.createClass({
 		//console.log('answered status pryrs line 65', this.props.pryrmodel.get('answered'))
 		var clickedModelId = this.props.prayrmodel.id
 		//console.log(clickedModelId)
-		
 		ACTIONS.updatePrayrModel(clickedModelId)
 	},
 
@@ -125,20 +127,24 @@ const PrayrDetailItem = React.createClass({
 	},
 
 	render: function(){
-		// var answeredClass
-		// if(this.props.prayrmodel.get('answered') === 'true'){
-		// 	answeredClass = 'Answered'
-		// } else if (this.props.prayrmodel.get('answered') === 'false'){
-		// 	answeredClass = ''
-		// }
-		// console.log(answeredClass)
-		
+		var answeredClass
+			
+
+		if(this.props.prayrmodel.get('answered') === true){
+			answeredClass = 'Answered'
+			
+		} else if (this.props.prayrmodel.get('answered') === false){
+			answeredClass = 'UnAnswered'
+			
+		}
+		console.log(answeredClass)
+		this.props.prayrmodel.get('answered')
 		return (
 				<div className="container-full">
 					<div className="container-narrow">
 						<div className="grid-container" id="quick-add">
 							
-							<div className="form-field  lg-12-x-12" >
+							<div className="lg-12-x-12 inbox-prayr" >
 								<h3>{`From: ${this.props.prayrmodel.get('from')}`}</h3>
 								<h3>{`Subject: ${this.props.prayrmodel.get('title')}`}</h3>
 								<h3>{`Details: ${this.props.prayrmodel.get('description')}`}</h3>
@@ -146,7 +152,7 @@ const PrayrDetailItem = React.createClass({
 							</div>
 							
 							<div className="sm-3-x-12">
-								<button className="UnAnswered" onClick={this._toggleAnswered}>UnAnswered</button>
+								<button className={answeredClass} onClick={this._toggleAnswered}>{answeredClass}</button>
 								{/*<input className={answeredClass} type="checkbox" onClick={this._toggleAnswered} />*/}
 							</div>
 							

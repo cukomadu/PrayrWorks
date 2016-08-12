@@ -9,11 +9,69 @@ let helpers = require('../config/helpers.js')
 
 let User = require('../db/schema.js').User
 let Prayr = require('../db/schema.js').Prayr
+let PersonalPrayr = require('../db/schema.js').PersonalPrayr
 
   
-//////////////////
+  /////////////////
+// PERSONAL PRAYR ROUTES
+///////////////////
+
+
+//POST - Write
+apiRouter.post('/personalprayrs', function(request, response){ // create one prayr record
+  let newPersonalPrayr = new PersonalPrayr(request.body)
+  newPersonalPrayr.save(function(err){
+    if(err){
+      return response.json(err)
+    }
+    response.json(newPersonalPrayr)
+  })
+})
+
+//GET - Read
+apiRouter.get('/personalprayrs', function(request, response){ // read all prayr records
+  PersonalPrayr.find(request.query, function(err, records){
+    if(err){
+      return response.json(err)
+    }
+    response.json(records)
+  })
+})
+
+//PUT - Update
+apiRouter.put('/personalprayrs/:_id', function(request, response){ // update one prayr record
+  var modelId = request.params._id
+  console.log('Incoming -- ', request.body)
+  PersonalPrayr.findByIdAndUpdate(modelId, request.body, {new: true}, function(err, record){
+    console.log('Record -- ', record)
+
+    if(err){
+      return response.json(err)
+    }
+    else {
+      console.log('model updated', record)
+      response.json(record)
+    }
+  })
+})
+
+//DELETE - Delete
+apiRouter.delete('/personalprayrs/:_id', function(request, response){
+  PersonalPrayr.remove({_id: request.params._id}, (err) => {
+    if(err) {
+      return response.json(err)
+    }
+    response.json({
+      msg: `record ${request.params._id} deleted successfully!`,
+      _id: request.params._id
+    })
+  })
+})
+
+
+/////////////////
 //PRAYR ROUTES
-//////////////////
+///////////////////
 
 //POST - Write
 apiRouter.post('/prayrs', function(request, response){ // create one prayr record

@@ -18,6 +18,14 @@ const prayrSchema = new Schema({
   viewStatus: {type: Boolean, default: false}
 })
 
+const myPersonalPrayrSchema = new Schema({
+  to: {type: String, required: true},
+  description: {type: String, required: true},
+  answered: {type: Boolean, default: false}
+  
+})
+
+
 
 // ----------------------
 // USERS
@@ -36,5 +44,6 @@ const usersSchema = new Schema({
 
 module.exports = {
   User: createModel('User', usersSchema),
-  Prayr: createModel('Prayr', prayrSchema)
+  Prayr: createModel('Prayr', prayrSchema),
+  PersonalPrayr: createModel('PersonalPrayr', myPersonalPrayrSchema)
 }

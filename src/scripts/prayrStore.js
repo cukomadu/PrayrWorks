@@ -1,11 +1,12 @@
 import Backbone from 'backbone'
 import _ from 'underscore'
-import { PrayrCollection } from './models/models'
+import { PersonalPrayrCollection, PrayrCollection } from './models/models'
 
 const PRAYR_STORE = _.extend(Backbone.Events, {
 
 	data: {
 		prayrCollection: new PrayrCollection(),
+		personalPrayrCollection: new PersonalPrayrCollection(),
 		currentView: 'allpryrstome',
 		pDisplay: 'none',
 		buttonState: '+'
@@ -28,7 +29,8 @@ const PRAYR_STORE = _.extend(Backbone.Events, {
 	},
 
 	initialize: function(){
-		this.data.prayrCollection.on('sync update', this._emitChange.bind(this))
+		this.data.prayrCollection.on('sync update', this._emitChange.bind(this)),
+		this.data.personalPrayrCollection.on('sync update', this._emitChange.bind(this))
 	}
 })
 

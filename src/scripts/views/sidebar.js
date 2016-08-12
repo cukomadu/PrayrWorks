@@ -16,6 +16,7 @@ const Sidebar = React.createClass({
 				    <a className="sidebar-topic" href='#prayrs/compose'>Compose</a>
 				    <a className="sidebar-topic" href='#prayrs/sent'>Sent</a>
 				    <a className="sidebar-topic" href='#prayrs/answered'>Answered</a>
+				    <a className="sidebar-topic" href='#prayrs/myprayrlist'>My Prayer List</a>
 				  </div>
 				  
 				</aside>

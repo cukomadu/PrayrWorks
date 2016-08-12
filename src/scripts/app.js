@@ -11,7 +11,7 @@ import Inbox from './views/inbox'
 import Sent from './views/sent'
 import Compose from './views/compose'
 import Answered from './views/answered'
-//import MyPrayrList from './views/myPrayr-list'
+import MyPrayrList from './views/myPrayr-list'
 
 
 
@@ -26,6 +26,7 @@ const app = function() {
 	  		"prayrs/sent": "_showSent",
         "prayrs/compose": "_showCompose",
 		    "prayrs/answered": "_showAnswered",
+        "prayrs/myprayrlist": "_showMyPrayrList",
 	  		"*catchall": "_redirect"
 	  	},
 
@@ -66,10 +67,10 @@ const app = function() {
   				ReactDOM.render(<Answered />, document.querySelector('.container'))
   		},
 
-      //  _showAdd: function(){
-    //      //if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
-      //    ReactDOM.render(<Add />, document.querySelector('.container'))
-      // },
+       _showMyPrayrList: function(){
+         //if(!User.getCurrentUser() && User.getCurrentUser() !== 'null' ){ return location.hash = "home"}
+         ReactDOM.render(<MyPrayrList />, document.querySelector('.container'))
+      },
 
 	  	_redirect: function(){
 	  		location.hash = "home"
