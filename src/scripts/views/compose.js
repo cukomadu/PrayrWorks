@@ -45,7 +45,11 @@ const ComposePrayr = React.createClass({
 					<div className="container-narrow">
 
 	   					<div className="txt-right label-muted">
-	   						<h1>Compose</h1>
+	   						<h4>Compose</h4>
+	   					</div>
+	   					<div className="txt-left padHeader">
+	   						<h2 id="colorBlue">Let them know you are praying... Send a prayer! </h2>
+	   						
 	   					</div>
 	   					<form onSubmit={this._getPrayrInfo} className="form-group grid-container">
 	  

@@ -82,8 +82,8 @@ const QuickAddPrayr = React.createClass({
 					<section className="section-label">  
 			            <div className="container-narrow">
 			                <div className="grid-container">
-			                   	<div className="lg-12-x-12 label-muted">
-									<h1>Your Prayer List</h1>
+			                   	<div className="lg-12-x-12 txt-right label-muted">
+									<h4>Personal Prayer List </h4>
 								</div>
 							</div>
 						</div>
@@ -92,7 +92,9 @@ const QuickAddPrayr = React.createClass({
 						<div className="container-narrow">
 							<div className="grid-container">
 								<div className="lg-12-x-12 input-add">
-									
+									<div className="txt-left padHeader">
+	   									<h2 id="colorBlue">Create personal prayers... Add a prayer to your list! </h2>
+	   								</div>
 									<input id="user-input"
 				                    type="text" 
 				                    name="description" 
@@ -123,9 +125,7 @@ const PrayrListView = React.createClass({
 				<div className="container-full">
 					<div className="container-narrow">
 						<div className="grid-container">
-							<div className="lg-12-x-12 label-muted">
-								<h2>Quick Add List</h2>
-							</div>
+						
 							{this._createPryr(this.props.personalPrayrColl)}
 						</div>
 					</div>

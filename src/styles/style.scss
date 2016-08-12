@@ -19,6 +19,36 @@ $darkgrey2: #454545;
 $borderOrange: #dedede;
 $hoverOrange: #fbc4a5;
 
+.grid-border {
+	border-bottom: 1px solid $lightgrey;
+	//border-right: 1px solid lightgrey;
+}
+
+#italic-font {
+	//text-decoration: italic-font;
+	font-size: 20px;
+}
+
+.project-description {
+	//width: ;
+	height: 30vh;
+	border: none;
+	margin: 2%;
+	text-align: center;
+	padding-top: 5%; 
+	background: $orange;
+	opacity: 0.8;
+	font-size: 60px;
+	font-color: $darkgrey;
+
+	&:hover {
+		color: $lighterOrange;
+	}
+}
+
+.padHeader {
+	padding-bottom: 5%;
+}
 
 #colorOrange {
 	background: $orange;
@@ -29,8 +59,18 @@ $hoverOrange: #fbc4a5;
 }
 
 #colorBlue {
-	color: $orange;
-	font-size: 20px;
+	color: $blue;
+	//font-size: 20px;
+}
+
+#colorGrey {
+	color: $darkgrey;
+	//font-size: 20px;
+}
+
+#colorWhite {
+	color: $white;
+	//font-size: 20px;
 }
 
 .Answered {
@@ -53,9 +93,25 @@ $hoverOrange: #fbc4a5;
 	border: none;
 }
 
+.site-features {
+	padding: 1rem 0;
+    background: #eeeeee;
+    margin-top: 3rem;
+}
+
+.home-features {
+	padding: 1rem 0;
+    background: $white;
+    margin-top: 3rem;
+}
+
+.segment {
+	background: $white;
+}
+
 //General Styles
 body {
-	font-family: 'Open Sans', Helvetica, sans-serif;
+	font-family: 'Raleway', sans-serif;
 	color: $darkgrey2;
 	//background: $lightgrey;
 	//background-size: cover;
@@ -78,10 +134,12 @@ input:focus {
 
 #leftLogo {
 	color: $blue;
+	font-family: 'Roboto Condensed', sans-serif;
 }
 
 #rightLogo {
 	color: $orange;
+	font-family: 'Roboto Condensed', sans-serif;
 }
 
 .nav-bar.with-logo .nav-logo {
@@ -120,14 +178,18 @@ input:focus {
 
 .container-hero {
 	min-height: 80vh;
-	background-image: url("https://hd.unsplash.com/photo-1455641139200-aebc8e447b8a");
+	//background-image: url("https://unsplash.com/search/outdoor?photo=YN_JWPDYVoM");
+	background: $blue;
+	//opacity: 0.5;
 
 	@include media-query($med-screen) {
 			min-height: 580px;
 			//position: relative;
 			//padding: 115px 0 40px;
 			//overflow: hidden;
-			background-image: url("https://hd.unsplash.com/photo-1455641139200-aebc8e447b8a");
+			//background-image: url("https://unsplash.com/search/outdoor?photo=YN_JWPDYVoM");
+			background: $blue;
+			//opacity: 0.8;
 	}
 
 	.hero {
@@ -142,7 +204,7 @@ input:focus {
 #hero-link {
 	background: $orange;
 	border: none;
-	margin-top: 5%;
+	margin-top: 2%;
 }
 
 #nav-color {
@@ -275,14 +337,14 @@ input:focus {
     padding: 1%;
     //border: 1px solid #dadada;
     //transition: .5s border $lighterOrange;
-    font-size: 1.5rem;
+    font-size: 2.0rem;
    // border-radius: 5px;
    	border: none;
     display: block;
     width: 100%;
     margin: 40px 0 26px;
 	text-align: center;
-	font-family: 'Open Sans', Helvetica, sans-serif;
+	font-family: 'Raleway', sans-serif;
 
 	&:focus{
 		border-bottom: $lighterOrange 2px solid;
@@ -308,7 +370,7 @@ input:focus {
 }
 
 .alt-font {
- 	font-family: "Palatino", serif;
+ 	font-family: 'Raleway', sans-serif;
 }
 
 
@@ -324,6 +386,7 @@ input:focus {
 	// border: 1px solid $blue;
 	// font-size: 70px;
 	// border-radius: 100%;
+	opacity: 0.5;
 }
 
 .subNav {

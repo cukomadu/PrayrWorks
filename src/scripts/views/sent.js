@@ -64,13 +64,18 @@ const SentPrayrs = React.createClass({
 					<section className="section-label">  
 			            <div className="container-narrow">
 			                <div className="grid-container">
-			                   	<div className="lg-12-x-12 label-muted">
-									<h1>Sent Prayers</h1>
+			                   	<div className="lg-12-x-12 txt-right label-muted">
+									<h4>Sent Prayers</h4>
 								</div>
 							</div>
 						</div>
 					</section>
-
+					<div className="container-narrow">
+						<div className="txt-left padHeader">
+	   							<h2 id="colorBlue">Sharing is caring... Here are your sent prayers! </h2>
+	   						
+	   					</div>
+					</div>
 					{this._createPryr(this.props.prayrColl)}
 				</div>
 			)

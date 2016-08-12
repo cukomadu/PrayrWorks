@@ -77,11 +77,17 @@ const TrackPrayrs = React.createClass({
 			            <div className="container-narrow">
 			                <div className="grid-container">
 			                   	<div className="lg-12-x-12 label-muted txt-right">
-									<h1>Answered Prayers</h1>
+									<h4>Answered Prayers</h4>
 								</div>
 							</div>
 						</div>
 					</section>
+					<div className="container-narrow">
+						<div className="txt-left padHeader">
+	   							<h2 id="colorBlue">Prayer really works... Here are your answered prayers! </h2>
+	   						
+	   					</div>
+					</div>
 					{this._createPryr(this.props.prayrColl)}
 				</div>
 			)

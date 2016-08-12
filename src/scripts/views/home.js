@@ -12,7 +12,7 @@ const Home = React.createClass({
 					<div className="container-hero">
 						<header className="hero">
 							<div className="container-narrow hero-text">  
-							     <h2 className="title">A simple way to organize your prayers.</h2>
+							     <h2 className="title">A simple way to organize, share and track your prayers.</h2>
 							     <h4 className="subtitle"></h4>
 							</div>
 							<div className="container-narrow"> 
@@ -20,12 +20,61 @@ const Home = React.createClass({
 							</div>
 						</header>
 					</div>
-					<section>
+					<div className="container-narrow">
+							<h1 id="colorGrey" className="txt-center">Powerful Features, Simple Design</h1>
+					</div>
+					<div className="container-full site-features">
+						<div className="container-narrow">
+							<section className="segment">
+								<div className="grid-container grid-border">
+									<div className="sm-12-x-12 md-6-x-12 project-description">
+								        <h2>
+								            <strong id="colorBlue">Organize</strong>
+								        </h2>
+								        <p>Organize your prayers in one place.
+										</p>
+										<div className="addImg"><img src="https://s19.postimg.org/zb7d8dikz/noun_530552.png" /></div>
+        							</div>
+        							<div className="sm-12-x-12 md-6-x-12 project-description">
+								        <h2>
+								            <strong id="colorBlue">Create</strong>
+								        </h2>
+
+								        <p>Creating a prayer is simple and easy.
+										</p>
+										<div className="addImg"><img src="https://s19.postimg.org/xtlwwtdub/noun_573215.png" /></div>
+
+        							</div>
+								</div>
+								
+								<div className="grid-container">
+									<div className="sm-12-x-12 md-6-x-12 project-description">
+								        <h2>
+								            <strong id="colorBlue">Share</strong>
+								        </h2>
+								        <p>Send a prayer to anyone with an email address.</p>
+								        <div className="addImg"><img src="https://s19.postimg.org/gey0djp77/noun_15026.png" /></div>
+        							</div>
+        							<div className="sm-12-x-12 md-6-x-12 project-description">
+								        <h2>
+								            <strong id="colorBlue">Track</strong>
+								        </h2>
+								        <p>Track your prayers and check off when answered.</p>
+								        <div className="addImg"><img src="https://s19.postimg.org/voawo11sj/noun_103514.png" /></div>
+								        
+        							</div>
+								</div>
+							</section>
+						</div>
+					</div>
+				
+
+					{/*<section>
 						<div className="container-narrow">
 							<h2 className="txt-center">Powerful Features! Simple Design!</h2>
 							<div className="grid-container">
 								<div id="add-section" className="lg-6-x-12">
-									<h2>Create a prayer</h2>
+									<h2>Organize</h2>
 									<p className="alt-font">
 										Creating a prayer is simple and easy.
 										Access it wherever you go, forever.

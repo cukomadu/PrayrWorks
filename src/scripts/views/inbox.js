@@ -80,15 +80,18 @@ const PrayrDetailView = React.createClass({
 					<section className="section-label">  
 			            <div className="container-narrow">
 			                <div className="grid-container">
-			                   	<div className="lg-12-x-12 label-muted">
-									<h1>Inbox</h1>
+			                   	<div className="lg-12-x-12 txt-right label-muted">
+									<h4>Inbox</h4>
 								</div>
 							</div>
 						</div>
 					</section>
 					<div className="container-narrow">
 						<div className="grid-container">
-							
+							<div className="txt-left padHeader">
+	   							<h2 id="colorBlue">Someone is praying for you... Put a smile on! </h2>
+	   						
+	   						</div>
 							{this._createPryr(this.props.prayrColl)}
 						</div>
 					</div>
