@@ -24,6 +24,10 @@ $hoverOrange: #fbc4a5;
 	//border-right: 1px solid lightgrey;
 }
 
+.increaseWidth {
+	width: 95%;
+}
+
 #italic-font {
 	//text-decoration: italic-font;
 	font-size: 20px;
@@ -58,6 +62,15 @@ $hoverOrange: #fbc4a5;
 	//text-align: center;
 }
 
+#atag {
+	color: $orange;
+}
+
+#borderNone {
+	border: none;
+	margin-bottom: -15%;
+}
+
 #colorBlue {
 	color: $blue;
 	//font-size: 20px;
@@ -77,6 +90,7 @@ $hoverOrange: #fbc4a5;
 	background-color: $orange;
 	color: $white;
 	border: none;
+	font-family: 'Raleway', sans-serif;
 
 	&:hover{
 		background: $hoverOrange;
@@ -91,6 +105,7 @@ $hoverOrange: #fbc4a5;
 	background-color: $lightgrey;
 	color: $white;
 	border: none;
+	font-family: 'Raleway', sans-serif;
 }
 
 .site-features {
@@ -178,8 +193,8 @@ input:focus {
 
 .container-hero {
 	min-height: 80vh;
-	//background-image: url("https://unsplash.com/search/outdoor?photo=YN_JWPDYVoM");
-	background: $blue;
+	background-image: url("https://unsplash.com/search/outdoor?photo=YN_JWPDYVoM");
+	//background: $blue;
 	//opacity: 0.5;
 
 	@include media-query($med-screen) {
@@ -187,8 +202,8 @@ input:focus {
 			//position: relative;
 			//padding: 115px 0 40px;
 			//overflow: hidden;
-			//background-image: url("https://unsplash.com/search/outdoor?photo=YN_JWPDYVoM");
-			background: $blue;
+			background-image: url("https://unsplash.com/search/outdoor?photo=YN_JWPDYVoM");
+			//background: $blue;
 			//opacity: 0.8;
 	}
 
@@ -356,7 +371,7 @@ input:focus {
 }
 	
 #quick-add {
-	border: 1px solid $blue;
+	//border: 1px solid $blue;
 	margin-bottom: 2%;
 	border-radius: 5px;
 }

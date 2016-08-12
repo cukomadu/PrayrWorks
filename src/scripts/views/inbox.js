@@ -148,19 +148,44 @@ const PrayrDetailItem = React.createClass({
 						<div className="grid-container" id="quick-add">
 							
 							<div className="lg-12-x-12 inbox-prayr" >
-								<h3>{`From: ${this.props.prayrmodel.get('from')}`}</h3>
-								<h3>{`Subject: ${this.props.prayrmodel.get('title')}`}</h3>
-								<h3>{`Details: ${this.props.prayrmodel.get('description')}`}</h3>
+
+								<table>
+
+							   <thead>
+							      <tr>
+							         <th>From</th>
+							         <th>Subject</th>
+							         <th>Description</th>
+							         <th>Status</th>
+							         <th>Delete</th>
+							      </tr>
+							   </thead>
+							   <tbody>
+							      <tr>
+							         <td>{this.props.prayrmodel.get('from')}</td>
+							         <td>{this.props.prayrmodel.get('title')}</td>
+							         <td>{this.props.prayrmodel.get('description')}</td>
+							         <td><button className={answeredClass} onClick={this._toggleAnswered}>{answeredClass}</button></td>
+							         <td><button id="borderNone" onClick={this._deletePrayr}><i id="borderNone" className="fa fa-trash fa-2x" aria-hidden="true"></i></button></td>
+							      </tr>
+							   </tbody>
+
+							</table>
+
+									{/*<h3>{`From: ${this.props.prayrmodel.get('from')}`}</h3>
+									<h3>{`Subject: ${this.props.prayrmodel.get('title')}`}</h3>
+									<h3>{`Details: ${this.props.prayrmodel.get('description')}`}</h3>
+									
+								</div>
 								
-							</div>
-							
-							<div className="sm-3-x-12">
-								<button className={answeredClass} onClick={this._toggleAnswered}>{answeredClass}</button>
-								{/*<input className={answeredClass} type="checkbox" onClick={this._toggleAnswered} />*/}
-							</div>
-							
-							<div className=" sm-3-x-12">
-								<button onClick={this._deletePrayr}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+								<div className="sm-3-x-12">
+									<button className={answeredClass} onClick={this._toggleAnswered}>{answeredClass}</button>
+									{/*<input className={answeredClass} type="checkbox" onClick={this._toggleAnswered} />
+								</div>
+								
+								<div className=" sm-3-x-12">
+									<button onClick={this._deletePrayr}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+								</div>*/}
 							</div>
 							
 						</div>

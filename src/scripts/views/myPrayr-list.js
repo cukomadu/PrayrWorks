@@ -125,10 +125,12 @@ const PrayrListView = React.createClass({
 				<div className="container-full">
 					<div className="container-narrow">
 						<div className="grid-container">
-						
+							
 							{this._createPryr(this.props.personalPrayrColl)}
 						</div>
+
 					</div>
+
 				</div>
 			)
 	}
@@ -157,15 +159,41 @@ const PrayrItem = React.createClass({
 			answeredClass = "bg-success"
 			answeredTxt = "Answered"		
 		} else {
-			answeredClass = "bg-warn"
+			answeredClass = "bg-inverted"
 			answeredTxt = "Unanswered"	
 		}
 
 		return (
 				<div className="container-narrow">
 					<div className="grid-container" id="quick-add">
+
+						<table className="increaseWidth">
+
+							   <thead>
+							      <tr>
+							         <th>Description</th>
+							         <th>Status</th>
+							         <th>Delete</th>
+							         <th> </th>
+							         <th> </th>
+							         
+							      </tr>
+							   </thead>
+							   <tbody>
+							      <tr>
+							      	 <td>{this.props.personalPrayrModel.get('description')}</td>
+							         <td><button className={answeredClass} onClick={this._toggleAnswered}>{answeredTxt}</button></td>
+							         <td><button id="borderNone" onClick={this._deletePrayr}><i 
+							         id="borderNone" className="fa fa-trash fa-2x" aria-hidden="true"></i></button></td>
+							         <td> </td>
+							         <td> </td>
+							      </tr>
+							   </tbody>
+
+							</table>
 						
-						<div className="form-field  lg-12-x-12" >
+						
+						{/*<div className="form-field  lg-12-x-12" >
 							<h3>{this.props.personalPrayrModel.get('description')}</h3>	
 						</div>
 
@@ -175,7 +203,7 @@ const PrayrItem = React.createClass({
 						
 						<div className=" sm-3-x-12 ">
 							<button onClick={this._deletePrayr}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
-						</div>
+						</div>*/}
 						
 					</div>
 
