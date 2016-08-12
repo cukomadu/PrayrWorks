@@ -12,7 +12,7 @@ const ACTIONS = {
 	signUserUp: function(userObj){
 		User.register(userObj).then( () => ACTIONS.signUserIn(userObj.email, userObj.password, 'prayrs/compose'),
             (error) => {
-                toastr.error('SignUp Unsuccessful')
+              //  toastr.error('SignUp Unsuccessful')
                 console.log(error)
             }
         )
@@ -21,13 +21,13 @@ const ACTIONS = {
 	signUserIn: function(email, password, sendUserTo) {
         User.login(email, password).then(
             (responseData) => {
-               toastr.success(`User ${User.getCurrentUser().name} Signed In Successfully!`)
+              // toastr.success(`User ${User.getCurrentUser().name} Signed In Successfully!`)
                 console.log('successful signin!', responseData)
                 //location.hash = 'prayrs/compose' 
                 ACTIONS.routeTo(sendUserTo)
             },
             (error) => {
-                toastr.error('SignIn Unsuccessful')
+               // toastr.error('SignIn Unsuccessful')
                console.log(error)
             }
         )
@@ -36,7 +36,7 @@ const ACTIONS = {
     signUserOut: function(name) { 
         User.logout().then(
             () => {
-            	toastr.success(`User ${name} Signed Out Successfully!`)
+            	//toastr.success(`User ${name} Signed Out Successfully!`)
             	location.hash = 'home'
             }
         )
@@ -47,11 +47,11 @@ const ACTIONS = {
         newPrayr.save().then(
             (responseData) => { 
                 console.log(responseData)
-               toastr.success('Prayer Sent Successfully!')
+              // toastr.success('Prayer Sent Successfully!')
         		location.hash = 'prayrs/sent'    
             },
             (error) => {
-                toastr.error('Prayr did not save successfully!')
+               // toastr.error('Prayr did not save successfully!')
                 console.log(error)
             }
         )
@@ -64,14 +64,14 @@ const ACTIONS = {
 
         newPersonalPrayr.save().then(
             (responseData) => { 
-                toastr.success('Personal Prayr saved!')
+              //  toastr.success('Personal Prayr saved!')
 
                 personalPrayrCollectionCopy.add(newPersonalPrayr)
                 PRAYR_STORE._set( 'personalPrayrCollection', personalPrayrCollectionCopy )
                     
             },
             (error) => {
-                toastr.error('Prayr did not save successfully!')
+                //toastr.error('Prayr did not save successfully!')
                 console.log(error)
             }
         )
@@ -89,7 +89,7 @@ const ACTIONS = {
             
             prayrModelUpdate.save().then((responseData) => {
                 console.log(responseData)
-                toastr.success('Prayr Updated Successfully')
+               // toastr.success('Prayr Updated Successfully')
                 prayrCollectionCopy.set(prayrModelUpdate)
                 PRAYR_STORE._set( 'prayrCollection', prayrCollectionCopy )    
                 },               
@@ -113,7 +113,7 @@ const ACTIONS = {
             
             personalPrayrModel.save().then((responseData) => {
                 console.log(responseData)
-                toastr.success('PersonalPrayr Updated Successfully')
+               // toastr.success('PersonalPrayr Updated Successfully')
                 personalPrayrCollectionCopy.set(personalPrayrModel)
                 PRAYR_STORE._set( 'personalPrayrCollection', personalPrayrCollectionCopy )    
                 },               
@@ -211,11 +211,11 @@ const ACTIONS = {
         newPrayr.save().then(
             (responseData) => { 
                 console.log(responseData)
-               toastr.success('Prayr Added Successfully!')
+              // toastr.success('Prayr Added Successfully!')
                 location.hash = 'prayrs/shares'    
             },
             (error) => {
-                toastr.error('Prayr did not save successfully!')
+               // toastr.error('Prayr did not save successfully!')
                 console.log(error)
             }
         )
