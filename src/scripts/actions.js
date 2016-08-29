@@ -106,7 +106,7 @@ const ACTIONS = {
         let personalPrayrCollectionCopy = new PersonalPrayrCollection( PRAYR_STORE.data.personalPrayrCollection.toJSON() )
 
         let personalPrayrModel = PRAYR_STORE.data.personalPrayrCollection.get(modelId)
-         
+           // personalPrayrCollectionCopy.remove(personalPrayrModel)
             personalPrayrModel.set({
                 answered: personalPrayrModel.get('answered') ? false : true
             })
@@ -114,7 +114,10 @@ const ACTIONS = {
             personalPrayrModel.save().then((responseData) => {
                 console.log(responseData)
                 toastr.success('PersonalPrayr Updated Successfully')
-                personalPrayrCollectionCopy.set(personalPrayrModel)
+                console.log('this is copy coll', personalPrayrCollectionCopy)
+                personalPrayrCollectionCopy.set(personalPrayrModel, {
+                    remove: false
+                })
                 PRAYR_STORE._set( 'personalPrayrCollection', personalPrayrCollectionCopy )    
                 },               
                 
