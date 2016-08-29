@@ -374,6 +374,14 @@ input:focus {
 	//border: 1px solid $blue;
 	margin-bottom: 2%;
 	border-radius: 5px;
+
+	th:nth-child(3) {
+		width: 100px;
+	}
+
+	th:nth-child(2) {
+		width: 150px;
+	}
 }
 
 .show {
