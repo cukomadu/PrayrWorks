@@ -25,7 +25,7 @@ const PreHeader = React.createClass({
 
 				    <div className="nav-list" id="nav-color">
 				      <a href="#signIn">Sign In</a>
-				      <a href="#add-section">Tour</a>
+				      <a href="#colorGrey">Tour</a>
 				    </div>
 					
 				</nav>
