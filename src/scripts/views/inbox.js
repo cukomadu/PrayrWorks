@@ -92,7 +92,26 @@ const PrayrDetailView = React.createClass({
 	   							<h2 id="colorBlue">Someone is praying for you... Put a smile on! </h2>
 	   						
 	   						</div>
-							{this._createPryr(this.props.prayrColl)}
+	   						<div className="table-full-width" id="quick-add">
+
+								<table className="increaseWidth">
+
+								   <thead>
+								      <tr>
+								         <th>From</th>
+							        	 <th>Subject</th>
+							         	 <th>Description</th>
+							         	 <th>Status</th>
+							         	 <th>Delete</th>    
+								      </tr>
+								   </thead>
+								   <tbody>
+								   		{this._createPryr(this.props.prayrColl)}
+								   </tbody>
+
+								</table>
+							</div>
+							{/*this._createPryr(this.props.prayrColl)*/}
 						</div>
 					</div>
 				</div>
@@ -143,55 +162,15 @@ const PrayrDetailItem = React.createClass({
 		console.log(answeredClass)
 		this.props.prayrmodel.get('answered')
 		return (
-				<div className="container-full">
-					<div className="container-narrow">
-						<div className="grid-container" id="quick-add">
-							
-							<div className="lg-12-x-12 inbox-prayr" >
-
-								<table>
-
-							   <thead>
-							      <tr>
-							         <th>From</th>
-							         <th>Subject</th>
-							         <th>Description</th>
-							         <th>Status</th>
-							         <th>Delete</th>
-							      </tr>
-							   </thead>
-							   <tbody>
-							      <tr>
-							         <td>{this.props.prayrmodel.get('from')}</td>
-							         <td>{this.props.prayrmodel.get('title')}</td>
-							         <td>{this.props.prayrmodel.get('description')}</td>
-							         <td><button className={answeredClass} onClick={this._toggleAnswered}>{answeredClass}</button></td>
-							         <td><button id="borderNone" onClick={this._deletePrayr}><i id="borderNone" className="fa fa-trash fa-2x" aria-hidden="true"></i></button></td>
-							      </tr>
-							   </tbody>
-
-							</table>
-
-									{/*<h3>{`From: ${this.props.prayrmodel.get('from')}`}</h3>
-									<h3>{`Subject: ${this.props.prayrmodel.get('title')}`}</h3>
-									<h3>{`Details: ${this.props.prayrmodel.get('description')}`}</h3>
-									
-								</div>
-								
-								<div className="sm-3-x-12">
-									<button className={answeredClass} onClick={this._toggleAnswered}>{answeredClass}</button>
-									{/*<input className={answeredClass} type="checkbox" onClick={this._toggleAnswered} />
-								</div>
-								
-								<div className=" sm-3-x-12">
-									<button onClick={this._deletePrayr}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
-								</div>*/}
-							</div>
-							
-						</div>
-
-					</div>
-				</div>
+				
+		      <tr>
+		         <td>{this.props.prayrmodel.get('from')}</td>
+		         <td>{this.props.prayrmodel.get('title')}</td>
+		         <td>{this.props.prayrmodel.get('description')}</td>
+		         <td><button className={answeredClass} onClick={this._toggleAnswered}>{answeredClass}</button></td>
+		         <td><button id="borderNone" onClick={this._deletePrayr}><i id="borderNone" className="fa fa-trash fa-2x" aria-hidden="true"></i></button></td>
+		      </tr>
+							   
 			)
 	}
 })

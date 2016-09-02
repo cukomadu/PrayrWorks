@@ -75,8 +75,27 @@ const SentPrayrs = React.createClass({
 	   							<h2 id="colorBlue">Thank you for sharing... <a href="#prayrs/compose" id="atag">Send Another Prayer!</a></h2>
 	   						
 	   					</div>
+	   					<div className="table-full-width" id="quick-add">
+
+								<table className="increaseWidth">
+
+								   <thead>
+								      <tr>
+								         <th>To</th>
+							         	 <th>Subject</th>
+							         	 <th>Description</th>
+							         	 <th>Status</th>
+							        	 <th>Delete</th>    
+								      </tr>
+								   </thead>
+								   <tbody>
+								   		{this._createPryr(this.props.prayrColl)}
+								   </tbody>
+
+								</table>
+							</div>
 					</div>
-					{this._createPryr(this.props.prayrColl)}
+					{/*this._createPryr(this.props.prayrColl)*/}
 				</div>
 			)
 	}
@@ -105,46 +124,15 @@ const PrayrItem = React.createClass({
 		console.log(this.props.prayrmodel)
 
 		return (
-			    <div className="container-full">
-
-					<div className="container-narrow">
-						<div className="grid-container" id="quick-add">
-							<div className="form-field  lg-12-x-12" >	
-
-							<table>
-
-							   <thead>
-							      <tr>
-							         <th>To</th>
-							         <th>Subject</th>
-							         <th>Description</th>
-							         <th>Status</th>
-							         <th>Delete</th>
-							      </tr>
-							   </thead>
-							   <tbody>
-							      <tr>
-							         <td>{this.props.prayrmodel.get('to')}</td>
-							         <td>{this.props.prayrmodel.get('title')}</td>
-							         <td>{this.props.prayrmodel.get('description')}</td>
-							         <td>{this._setStatus()}</td>
-							         <td><button id="borderNone" onClick={this._deletePrayr}><i id="borderNone" className="fa fa-trash fa-2x" aria-hidden="true"></i></button></td>
-							      </tr>
-							   </tbody>
-
-							</table>
-
-								{/*<h3>{`To: ${this.props.prayrmodel.get('to')}`}</h3>
-								<h3>{`Subject: ${this.props.prayrmodel.get('title')}`}</h3>
-								<h3>{`Description: ${this.props.prayrmodel.get('description')}`}</h3>
-								<h3>Answer Status: {this._setStatus()}</h3>
-								<div className=" sm-3-x-12 ">
-									<button onClick={this._deletePrayr}><i className="fa fa-trash fa-2x" aria-hidden="true"></i></button>
-								</div> */}
-							</div>
-						</div>
-					</div>
-				</div>
+			    
+		      <tr>
+		         <td>{this.props.prayrmodel.get('to')}</td>
+		         <td>{this.props.prayrmodel.get('title')}</td>
+		         <td>{this.props.prayrmodel.get('description')}</td>
+		         <td>{this._setStatus()}</td>
+		         <td><button id="borderNone" onClick={this._deletePrayr}><i id="borderNone" className="fa fa-trash fa-2x" aria-hidden="true"></i></button></td>
+		      </tr>
+							   
 			)
 	}
 })
